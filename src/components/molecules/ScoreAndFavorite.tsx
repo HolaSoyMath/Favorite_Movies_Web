@@ -1,5 +1,6 @@
 import { HTMLAttributes } from "react";
 import { Ratings } from "../atoms/Rating";
+import React from 'react'
 
 export interface ScoreAndFavoriteProps 
     extends Omit<HTMLAttributes<HTMLDivElement>, "onChange">{

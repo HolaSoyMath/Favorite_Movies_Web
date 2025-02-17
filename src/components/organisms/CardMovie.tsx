@@ -2,6 +2,7 @@ import { HTMLAttributes } from "react";
 import { InfosMovieCard } from "../molecules/InfosMovieCard";
 import { ScoreAndFavorite } from "../molecules/ScoreAndFavorite";
 import { CardTop } from "../molecules/TopMovieCard";
+import React from 'react'
 
 export interface ScoreAndFavoriteProps 
 extends Omit<HTMLAttributes<HTMLDivElement>, "onChange">{

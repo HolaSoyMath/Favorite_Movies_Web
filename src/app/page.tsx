@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import React from 'react'
 
 //Rating
 import { CardTop } from "@/components/molecules/TopMovieCard";

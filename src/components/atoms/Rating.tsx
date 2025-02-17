@@ -2,6 +2,7 @@ import { Heart, Rating, RoundedStar } from "@smastrom/react-rating"
 import { HTMLAttributes } from "react";
 import '@smastrom/react-rating/style.css'
 import { cn } from "@/lib/utils";
+import React from 'react'
 
 export interface RatingProps 
     extends HTMLAttributes<HTMLDivElement> {

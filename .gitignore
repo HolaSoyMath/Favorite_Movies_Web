@@ -40,5 +40,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Enpoints base
+# base endpoints
 Endpoints Sistema Filmes.txt
+
+# support files
+.zip
