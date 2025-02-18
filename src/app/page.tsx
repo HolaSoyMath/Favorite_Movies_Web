@@ -4,10 +4,11 @@ import { useState } from "react";
 import React from 'react'
 
 //Rating
-import { CardTop } from "@/components/molecules/TopMovieCard";
+import { CardTop } from "@/components/molecules/CardTop";
 import { InfosMovieCard } from "@/components/molecules/InfosMovieCard";
 import { ScoreAndFavorite } from "@/components/molecules/ScoreAndFavorite";
 import { CardMovie } from "@/components/organisms/CardMovie";
+import { Ratings } from "@/components/atoms/Ratings";
 
 export default function Home() {
   const [ratingStar, setRatingStar] = useState(0)
@@ -21,7 +22,11 @@ export default function Home() {
       teste Star: {ratingStar}
       teste Heart: {ratingHeart}
       <div style={{display: "flex"}}>
-        <ScoreAndFavorite valueFavorite={ratingHeart} functionFavorite={setRatingHeart} valueRating={ratingStar} functionRating={setRatingStar} />
+        <ScoreAndFavorite 
+          onFavoriteChange={setRatingHeart} 
+          favoriteValue={ratingHeart} 
+          onRatingChange={setRatingStar} 
+          ratingValue={ratingStar} />
       </div>
 
       <CardMovie
@@ -29,10 +34,11 @@ export default function Home() {
         year="1999"
         title="SHREK 3"
         description="Com saudade do tempo em que era um verdadeiro ogro, Shrek assina um contrato enfeitiçado com Rumpelstiltskin e de repente puf! Em um instante, tudo e todos se transformam. De repente Burro não se lembra de seu melhor amigo, Fiona agora é uma valente princesa guerreira e Gato de Botas é só um gato gordo! Juntos"
-        functionRating={setRatingStar}
-        valueFavorite={ratingStar}
-        functionFavorite={setRatingHeart}
-        valueRating={ratingHeart}      
+        onRatingChange={setRatingStar}
+        ratingValue={ratingStar}      
+        onFavoriteChange={setRatingHeart}
+        favoriteValue={ratingHeart}
+        className="w-[200px]"
       />
     </div>
   );

@@ -3,13 +3,13 @@ import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
 import { tv } from "tailwind-variants";
 
-export interface InfoCardTopProps extends HTMLAttributes<HTMLDivElement> {
+export interface BadgeCardProps extends HTMLAttributes<HTMLDivElement> {
   text: string
   variant?: "year" | "category"
   className?: string
 }
 
-const infoCardVariant = tv({
+const badgeCardVariant = tv({
   base: "rounded-full font-semibold text-xl px-4 text-white",
   variants: {
     variant: {
@@ -22,10 +22,10 @@ const infoCardVariant = tv({
   }
 })
 
-export function InfoCardTop({ variant, text, className, ...props}: InfoCardTopProps) {
+export function BadgeCard({ variant, text, className, ...props}: BadgeCardProps) {
   return (
     <Badge
-      className={cn(infoCardVariant({variant}), className)}
+      className={cn(badgeCardVariant({variant}), className)}
       {...props}
     >
       {text}

@@ -1,0 +1,33 @@
+Trailer do filme
+https://developer.themoviedb.org/reference/movie-videos
+
+Buscar filme por nome -- obter dados dele
+https://developer.themoviedb.org/reference/search-movie
+
+Obter foto dos principais atores
+https://developer.themoviedb.org/reference/movie-credits
+
+Obter fotos do filme, tipo posters
+https://developer.themoviedb.org/reference/movie-images
+
+Filmes populares no momento
+https://developer.themoviedb.org/reference/movie-popular-list
+
+Filmes em cartaz
+https://developer.themoviedb.org/reference/movie-now-playing-list
+
+Recomendações -- Você pode gostar de....
+https://developer.themoviedb.org/reference/movie-recommendations
+
+Filmes Similares
+https://developer.themoviedb.org/reference/movie-similar
+
+Futuros lançamentos
+https://developer.themoviedb.org/reference/movie-upcoming-list
+
+*******************
+Buscar detalhes de uma pessoa
+https://developer.themoviedb.org/reference/person-details
+
+Para buscar uma foto é necessário utilizar o link:
+https://image.tmdb.org/t/p/w780/LINK_DA_IMAGEM
