@@ -1,11 +1,13 @@
-import { Heart, Rating, RoundedStar } from "@smastrom/react-rating"
+import { Heart, InputProps, Rating, RoundedStar } from "@smastrom/react-rating"
 import { HTMLAttributes } from "react";
 import '@smastrom/react-rating/style.css'
 import { cn } from "@/lib/utils";
 import React from 'react'
 
+type DivPropsWithoutOnChange = Omit<HTMLAttributes<HTMLDivElement>, "onChange">;
+
 export interface RatingProps 
-    extends HTMLAttributes<HTMLDivElement> {
+    extends InputProps {
     type: "star" | "heart"
     value: number
     quantity?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10
@@ -24,7 +26,7 @@ const itemStyles: Record<"star" | "heart", ItemStylesProps> = {
         itemShapes: RoundedStar,
         activeFillColor: '#FFB700',
         inactiveFillColor: '#FBF1A9',
-        boxSize: "400px"
+        boxSize: "100px"
     },
     heart: {
         itemShapes: Heart,

@@ -1,28 +1,29 @@
 import { HTMLAttributes } from "react";
 import { InfosMovieCard } from "../molecules/InfosMovieCard";
 import { ScoreAndFavorite } from "../molecules/ScoreAndFavorite";
-import { CardTop } from "../molecules/TopMovieCard";
+import { CardTop } from "../molecules/CardTop";
 import React from 'react'
+import { cn } from "tailwind-variants";
 
-export interface ScoreAndFavoriteProps 
-extends Omit<HTMLAttributes<HTMLDivElement>, "onChange">{
+export interface CardMovieProps 
+    extends HTMLAttributes<HTMLDivElement>{
     genre: string
     year: string
     description: string
     title: string   
-    functionRating: React.Dispatch<React.SetStateAction<number>>
-    valueRating: number
-    functionFavorite: React.Dispatch<React.SetStateAction<number>>
-    valueFavorite: number
+    onRatingChange: React.Dispatch<React.SetStateAction<number>>
+    ratingValue: number
+    onFavoriteChange: React.Dispatch<React.SetStateAction<number>>
+    favoriteValue: number
     className?: string
 }
 
-export function CardMovie({genre, year, description, title, functionRating, valueRating, functionFavorite, valueFavorite, className}: ScoreAndFavoriteProps) {
+export function CardMovie({genre, year, description, title, onRatingChange, ratingValue, onFavoriteChange, favoriteValue, className}: CardMovieProps) {
     return(
-        <div className={`w-[400px] ${className}`}>
+        <div className={className}>
             <CardTop genre={genre} year={year}/>
             <InfosMovieCard description={description} title={title}/>
-            <ScoreAndFavorite functionFavorite={functionFavorite} functionRating={functionRating} valueFavorite={valueFavorite} valueRating={valueRating} />
+            <ScoreAndFavorite onFavoriteChange={onFavoriteChange} onRatingChange={onRatingChange} favoriteValue={favoriteValue} ratingValue={ratingValue} />
         </div>
     )
 }
