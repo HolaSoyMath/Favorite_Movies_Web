@@ -1,7 +1,6 @@
-import { HTMLAttributes, useState } from "react";
+import { HTMLAttributes} from "react";
 import { Ratings } from "../atoms/Ratings";
 import React from 'react'
-import { cn } from "tailwind-variants";
 
 export interface ScoreAndFavoriteProps 
     extends HTMLAttributes<HTMLDivElement>{
@@ -15,9 +14,9 @@ export interface ScoreAndFavoriteProps
 export function ScoreAndFavorite({onRatingChange, ratingValue, onFavoriteChange, favoriteValue, className, ...props}: ScoreAndFavoriteProps) {
 
     return(
-        <div className={`flex  ${className}`} {...props}>
-            <Ratings type="star" value={ratingValue} onChange={onRatingChange} quantity={5} />
-            <Ratings type="heart" value={favoriteValue} onChange={onFavoriteChange} quantity={1}/>
+        <div className={`flex justify-between w-full ${className}`} {...props}>
+            <Ratings type="star" value={ratingValue} onChange={onRatingChange} quantity={5} className="!w-1/2"/>
+            <Ratings type="heart" value={favoriteValue} onChange={onFavoriteChange} quantity={1} className="!w-5"/>
         </div>
     )
 }

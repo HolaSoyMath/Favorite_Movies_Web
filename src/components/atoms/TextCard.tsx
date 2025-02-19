@@ -1,30 +1,42 @@
-import React, { LabelHTMLAttributes } from "react";
+import React, { HTMLAttributes } from "react";
 import { cn } from "@/lib/utils";
-import { Label } from "@/components/ui/label";
 import { tv } from "tailwind-variants";
 
-export interface TextCardProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  variant: "title" | "description"
+export interface TextCardProps extends HTMLAttributes<HTMLParagraphElement> {
+  variant: 'title' | 'description'
+  fontSize?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
 }
 
 const textCardVariant = tv({
-  base: "font-semibold px-4 text-[var(--foreground)] block ",
-  variants:{
-    variant:{
-      title: "text-xl h-[30px]",
-      description: "text-base line-clamp-3 overflow-hidden h-[70px]"
-    }
+  base: 'font-semibold text-[--foreground] block',
+  variants: {
+    variant: {
+      title: 'h-[30px] ',
+      description: 'overflow-hidden h-[70px]',
+    },
+    fontSize: {
+      xxs: 'text-[10px]',
+      xs: 'text-xs',
+      sm: 'text-sm',
+      md: 'text-base',
+      lg: 'text-lg',
+      xl: 'text-xl',
+    },
   },
   defaultVariants: {
-    variant: "title"
-  }
+    variant: 'title',
+    fontSize: "md"
+  },
 })
 
-export function TextCard ({variant, className, children, ...props}: TextCardProps) {
+export function TextCard ({variant, fontSize, className, children, ...props}: TextCardProps) {
   return (
-      <Label className={cn(textCardVariant({variant}), className)} {...props}>{children}</Label>
-  );
+    <p
+      className={cn(textCardVariant({ variant, fontSize }), className)}
+      {...props}
+    >
+      {children}
+    </p>
+  )
 }
-
-TextCard.displayName = "TextCard";

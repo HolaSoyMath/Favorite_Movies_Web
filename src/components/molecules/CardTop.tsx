@@ -9,9 +9,12 @@ export interface CardTopProps extends HTMLAttributes<HTMLDivElement> {
 
 export function CardTop ({ genre, year, ...props }: CardTopProps) {
   return (
-      <div className="not-sr-only flex place-content-between px-[15px]" {...props} >
-        <BadgeCard text={genre} variant="category"/>
-        <BadgeCard text={year} variant="year" />
-      </div>
-  );
+    <div
+      className="not-sr-only flex place-content-between px-[15px]"
+      {...props}
+    >
+      <BadgeCard text={genre} fontSize="xs" variant="category" />
+      <BadgeCard text={year} fontSize="xs" variant="year" />
+    </div>
+  )
 }
