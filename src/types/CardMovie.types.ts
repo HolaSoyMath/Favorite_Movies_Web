@@ -6,6 +6,7 @@ export interface MovieData{
     year: string
     title: string
     description: string
+    poster: string
 }
 
 export interface InteractionData{
