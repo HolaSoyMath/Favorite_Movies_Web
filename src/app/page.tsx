@@ -1,60 +1,44 @@
 'use client'
-
-import { useState } from 'react'
 import React from 'react'
+import { NavigationMenu, NavigationMenuItem, NavigationMenuLink, NavigationMenuList,  } from '@/components/ui/navigation-menu';
+import Link from 'next/link';
+import { Clapperboard, House } from 'lucide-react';
+import Image from 'next/image';
 
-//Rating
-import { CardMovie } from '@/components/organisms/CardMovie'
-import { mockInfoMovies } from '@/mock/InfoMovies.mock'
-import { mockGenreList } from '@/mock/GenreMovieList.mock'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from '@/components/ui/carousel'
 
 export default function Home() {
-  const [ratingStar, setRatingStar] = useState(0)
-  const [ratingHeart, setRatingHeart] = useState(0)
-
-  const movies = mockInfoMovies.results
-  const genres = mockGenreList.genres
-
   return (
-    <Carousel
-      opts={{ loop: true }}
-      orientation="horizontal"
-      className="h-[470px] w-[800px] ml-80 bg-black"
-    >
-      <CarouselContent className="h-[470px]">
-        {movies.map((movie) => (
-          <CarouselItem className="pl-4 basis-1/7">
-            <CardMovie
-              key={movie.id}
-              movie={{
-                genre: genres.find((genre) => genre.id === movie.genre_ids[0])!
-                  .name,
-                year: new Date(movie.release_date).getFullYear().toString(),
-                title: movie.title,
-                description: movie.overview,
-                idMovie: movie.id.toString(),
-                poster: movie.poster_path,
-              }}
-              interaction={{
-                onFavoriteChange: setRatingHeart,
-                favoriteValue: ratingHeart,
-                onRatingChange: setRatingStar,
-                ratingValue: ratingStar,
-              }}
-              className=" h-full w-[250px]"
-            />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div style={{
+      backgroundColor: "#131316", 
+      paddingLeft: 10, 
+      paddingTop: 20,
+      paddingBottom: 20,
+      paddingRight: 15}}>
+        <NavigationMenu>
+            <NavigationMenuList>
+              <div>
+                <Link href="#" className='mx-5'>
+                  <Image src='/images/AmazonPrime.png' alt='Logo Amazon Prime' width='150' height='50' />
+                </Link>
+                  <NavigationMenuItem className='flex align-middle justify-center'>
+                      <Link href='#'>
+                          <NavigationMenuLink className='text-white flex h-12 px-6 justify-center items-center hover:bg-[#343A40] rounded-lg'>
+                              <House className='mr-3' />
+                              Home
+                          </NavigationMenuLink>
+                      </Link>
+                  </NavigationMenuItem>
+                  <NavigationMenuItem className='flex align-middle justify-center'>
+                      <Link href='#'>
+                          <NavigationMenuLink className='text-white flex h-12 px-6 justify-center items-center hover:bg-[#343A40] rounded-lg'>
+                              <Clapperboard className='mr-3' />
+                              Explorar
+                          </NavigationMenuLink>
+                      </Link>
+                  </NavigationMenuItem>
+              </div>
+            </NavigationMenuList>
+        </NavigationMenu>
+    </div>
   )
 }

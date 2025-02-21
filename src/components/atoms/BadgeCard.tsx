@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react'
-import { cn } from '@/lib/utils'
 import { Badge } from '@/components/ui/badge'
+import { cn } from '@/lib/utils'
 import { tv } from 'tailwind-variants'
 
 export interface BadgeCardProps extends HTMLAttributes<HTMLDivElement> {

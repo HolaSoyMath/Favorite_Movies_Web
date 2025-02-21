@@ -1,4 +1,3 @@
-import { HTMLAttributes, useState } from "react";
 import { InfosMovieCard } from "../molecules/InfosMovieCard";
 import { ScoreAndFavorite } from "../molecules/ScoreAndFavorite";
 import { CardTop } from "../molecules/CardTop";
@@ -18,7 +17,7 @@ export function CardMovie({ movie, interaction, className, ...props}: CardMovieP
                 <CardTop genre={genre} year={year} className="flex w-full place-content-between px-2 pt-2 relative z-10"/>
             </div>
             <div className="relative h-2/5 pb-1">
-                <InfosMovieCard description={description} title={title} className="h-[calc(100%-20px)] px-4"/>
+                <InfosMovieCard description={description} title={title} className="h-[calc(100%-20px)] px-4 flex flex-col"/>
                 <ScoreAndFavorite onFavoriteChange={onFavoriteChange} onRatingChange={onRatingChange} favoriteValue={favoriteValue} ratingValue={ratingValue} className="px-4"/>
             </div>
         </div>

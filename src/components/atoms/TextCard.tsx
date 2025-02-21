@@ -35,6 +35,7 @@ export function TextCard ({variant, fontSize, className, children, ...props}: Te
     <p
       className={cn(textCardVariant({ variant, fontSize }), className)}
       {...props}
+
     >
       {children}
     </p>
