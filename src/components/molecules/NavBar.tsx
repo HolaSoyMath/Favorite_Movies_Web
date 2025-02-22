@@ -15,7 +15,6 @@ import {
   User,
 } from 'lucide-react'
 import Image from 'next/image'
-import { NavBarButton } from '@/components/atoms/NavBar/NavBarButton'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { z } from 'zod'
@@ -29,6 +28,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { NavBarButton } from '../atoms/NavBar/NavBarButton'
 
 const formSchema = z.object({
   search: z.string().nonempty(),

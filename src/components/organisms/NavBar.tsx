@@ -79,12 +79,12 @@ export default function NavBar() {
                 control={form.control}
                 name="search"
                 render={({ field }) => (
-                  <FormItem className="flex items-center h-12 bg-[#343A40] rounded-full pl-4">
-                    <Search className="text-white" />
+                  <FormItem className="flex items-center h-12 rounded-full pl-4 bg-transparent border-2 dark:bg-[#343A40]  ">
+                    <Search className="text-[--foreground]" />
                     <FormControl>
                       <Input
                         placeholder="Buscar filmes..."
-                        className="max-h-full !m-0 border-none focus-visible:ring-0 text-white"
+                        className="max-h-full !m-0 border-none focus-visible:ring-0 text-[--foreground]"
                         {...field}
                       />
                     </FormControl>

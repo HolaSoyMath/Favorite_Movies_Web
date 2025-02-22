@@ -15,7 +15,7 @@ export default function CarouselCardMovie() {
       <Carousel
         opts={{ loop: true }}
         orientation="horizontal"
-        className="h-[470px] w-[800px] ml-80 bg-black mt-10"
+        className="h-[470px] w-full bg-black mt-10"
       >
         <CarouselContent className="h-[470px]">
           {movies.map((movie) => (
