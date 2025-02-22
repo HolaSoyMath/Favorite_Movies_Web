@@ -10,10 +10,8 @@ import {
   Heart,
   House,
   LogOut,
-  Moon,
   Search,
   Star,
-  Sun,
   User,
 } from 'lucide-react'
 import Image from 'next/image'
@@ -31,8 +29,6 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-import { useTheme } from 'next-themes'
-import { Button } from '@/components/ui/button'
 
 const formSchema = z.object({
   search: z.string().nonempty(),
@@ -40,9 +36,7 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-export default function NavBar() {
-  const { setTheme } = useTheme()
-
+export default function Home() {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -56,7 +50,7 @@ export default function NavBar() {
   }
 
   return (
-    <div className="py-5 px-12 bg-[--background] flex w-full justify-between">
+    <div className="py-5 px-12 bg-[#131316] flex w-full justify-between">
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
           <Link href="#" className="mx-5">
@@ -95,34 +89,9 @@ export default function NavBar() {
           </Form>
           <NavBarButton icon={Star} link="#" />
           <NavBarButton icon={Heart} link="#" />
-
           <DropdownMenu>
-            <DropdownMenuTrigger
-              asChild
-              className="text-[--foreground] flex h-12 w-12 px-3 justify-center items-center transition-all duration-300 hover:bg-[var(--hover-color)] rounded-lg border-none focus-visible:ring-0 shadow-none"
-            >
-              <Button variant="outline" className="p-0">
-                <Sun className="absolute w-6 h-6  rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute w-6 h-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setTheme('light')}>
-                Light
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('dark')}>
-                Dark
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('system')}>
-                System
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center hover:bg-[var(--hover-color)] rounded-xl h-12 px-6 cursor-pointer transition-all duration-300">
-              <Label className="text-[--foreground] cursor-pointer">
+            <DropdownMenuTrigger className="flex items-center hover:bg-[#343A40] rounded-xl h-12 px-6 cursor-pointer transition-all duration-300">
+              <Label className="text-white cursor-pointer">
                 Matheus Santos
               </Label>
               <Avatar className="ml-4">

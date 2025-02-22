@@ -1,5 +1,5 @@
-import React, { HTMLAttributes } from "react";
-import { BadgeCard } from "../atoms/BadgeCard";
+import React, { HTMLAttributes } from 'react'
+import { BadgeCard } from '../../atoms/Movie/BadgeCard'
 
 export interface CardTopProps extends HTMLAttributes<HTMLDivElement> {
   genre: string
@@ -7,7 +7,7 @@ export interface CardTopProps extends HTMLAttributes<HTMLDivElement> {
   className?: string
 }
 
-export function CardTop ({ genre, year, ...props }: CardTopProps) {
+export function CardTop({ genre, year, ...props }: CardTopProps) {
   return (
     <div
       className="not-sr-only flex place-content-between px-[15px]"

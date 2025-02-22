@@ -11,6 +11,8 @@ body {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
 
+    --hover-color: #d1d1d1;
+
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
 
@@ -46,6 +48,8 @@ body {
     --background: 240 10% 3.9%;
     --foreground: 0 0% 98%;
 
+    --hover-color: #333333;
+
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
 
@@ -79,6 +83,17 @@ body {
 @layer base {
   * {
     @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
