@@ -1,12 +1,10 @@
 import React from 'react'
 import CarouselCardMovie from '../organisms/CarouselCardMovie'
 import HighlightFilm from '../organisms/HighlightFilm'
-import NavBar from '../organisms/NavBar'
 
 export function HomePage() {
   return (
     <>
-      <NavBar />
       <main>
         <HighlightFilm
           urlPosterImg="/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg"
