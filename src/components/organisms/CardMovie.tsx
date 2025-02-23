@@ -20,7 +20,7 @@ export function CardMovie({
   const [rating, setRating] = useState(0)
 
   return (
-    <Card className={`w-[250px] h-[540px] border-none cursor-pointer duration-300 hover:scale-105 ${className}`} id={movie.idMovie.toString()}>
+    <Card className={`w-[250px] h-[540px] border-none cursor-pointer duration-300 hover:scale-100 scale-95 ${className}`} id={movie.idMovie.toString()}>
       <CardHeader className='h-[70%] rounded-t-xl px-0 pt-3 bg-cover bg-bottom bg-no-repeat'
         style={{
           backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.poster})`,

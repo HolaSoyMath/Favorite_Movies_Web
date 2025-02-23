@@ -29,7 +29,7 @@ export default function CarouselCardMovie({ className }: CarouselMovieProps) {
         orientation="horizontal"
         className={`h-[510px] max-w-screen px-12 mt-3 ${className}`}
       >
-        <CarouselContent className="h-[490px]">
+        <CarouselContent className="h-[460px]">
           {movies.map((movie) => (
             <CarouselItem className="basis-1/7" key={''}>
               <CardMovie
@@ -43,7 +43,7 @@ export default function CarouselCardMovie({ className }: CarouselMovieProps) {
                   idMovie: movie.id.toString(),
                   poster: movie.poster_path,
                 }}
-                className="h-full w-[200px]"
+                className="h-full w-[230px]"
               />
             </CarouselItem>
           ))}

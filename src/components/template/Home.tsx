@@ -1,7 +1,7 @@
 import React from 'react'
-import CarouselCardMovie from "../organisms/CarouselCardMovie";
-import HighlightFilm from "../organisms/HighlightFilm";
-import NavBar from "../organisms/NavBar";
+import CarouselCardMovie from '../organisms/CarouselCardMovie'
+import HighlightFilm from '../organisms/HighlightFilm'
+import NavBar from '../organisms/NavBar'
 
 export function HomePage() {
   return (
