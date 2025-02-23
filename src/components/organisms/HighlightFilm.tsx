@@ -4,7 +4,7 @@ import { Info } from 'lucide-react'
 import React, { HTMLAttributes } from 'react'
 
 export interface HighlightFilmProps extends HTMLAttributes<HTMLDivElement> {
-  urlPosterImg?: string
+  urlPosterImg: string
   nameMovie: string
   description: string
   idMovie: string

@@ -1,23 +1,15 @@
-import { HTMLAttributes } from "react"
+import { HTMLAttributes } from 'react'
 
-export interface MovieData{
-    idMovie: string
-    genre: string
-    year: string
-    title: string
-    description: string
-    poster: string
-}
-
-export interface InteractionData{
-    onRatingChange: React.Dispatch<React.SetStateAction<number>>
-    ratingValue: number
-    onFavoriteChange: React.Dispatch<React.SetStateAction<number>>
-    favoriteValue: number
+export interface MovieData {
+  idMovie: string
+  genre: string
+  year: string
+  title: string
+  description: string
+  poster: string
 }
 
 export interface CardMovieProps extends HTMLAttributes<HTMLDivElement> {
-    movie: MovieData;
-    interaction: InteractionData;
-    className?: string;
-  }
+  movie: MovieData
+  className?: string
+}

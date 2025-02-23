@@ -1,55 +1,45 @@
-import { InfosMovieCard } from '../molecules/CardMovie/InfosMovieCard'
+import React, { useState } from 'react'
 import { ScoreAndFavorite } from '../molecules/CardMovie/ScoreAndFavorite'
 import { CardTop } from '../molecules/CardMovie/CardTop'
-import React from 'react'
-import { cn } from '@/lib/utils'
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '../ui/card'
 import { CardMovieProps } from '@/types/CardMovie.types'
 
 export function CardMovie({
   movie,
-  interaction,
   className,
-  ...props
 }: CardMovieProps) {
-  const { idMovie, genre, year, title, description, poster } = movie
-  const { onRatingChange, ratingValue, onFavoriteChange, favoriteValue } =
-    interaction
+
+  const [favorite, setFavorite] = useState(0)
+  const [rating, setRating] = useState(0)
 
   return (
-    <div
-      id={idMovie.toString()}
-      className={cn(
-        'bg-[#232E46] rounded-xl relative cursor-pointer transition-transform duration-300 ease-in-out hover:scale-105',
-        className
-      )}
-      {...props}
-    >
-      <div className="relative h-3/5 flex-row">
-        <img
-          className="absolute top-0 left-0 w-full h-full object-cover object-bottom z-0 rounded-t-xl"
-          src={`https://image.tmdb.org/t/p/w780/${poster}`}
-          alt={`Pôster filme ${title}`}
-        />
-        <CardTop
-          genre={genre}
-          year={year}
-          className="flex w-full place-content-between px-2 pt-2 relative z-10"
-        />
-      </div>
-      <div className="relative h-2/5 pb-1">
-        <InfosMovieCard
-          description={description}
-          title={title}
-          className="h-[calc(100%-20px)] px-4 flex flex-col"
-        />
+    <Card className={`w-[250px] h-[540px] border-none cursor-pointer duration-300 hover:scale-105 ${className}`} id={movie.idMovie.toString()}>
+      <CardHeader className='h-[70%] rounded-t-xl px-0 pt-3 bg-cover bg-bottom bg-no-repeat'
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w780${movie.poster})`,
+        }}
+      >
+        <CardTop genre={movie.genre} year={movie.year} />
+      </CardHeader>
+      <CardContent className='h-[25%] pb-0 px-4 flex flex-col'>
+        <CardTitle className='line-clamp-2 pt-3'>{movie.title}</CardTitle>
+        <CardDescription className='pt-1 flex-1 overflow-hidden break-words'>{movie.description}</CardDescription>
+      </CardContent>
+      <CardFooter className='h-[5%] pb-0 px-4'>
         <ScoreAndFavorite
-          onFavoriteChange={onFavoriteChange}
-          onRatingChange={onRatingChange}
-          favoriteValue={favoriteValue}
-          ratingValue={ratingValue}
-          className="px-4"
+          onFavoriteChange={setFavorite}
+          onRatingChange={setRating}
+          favoriteValue={favorite}
+          ratingValue={rating}
         />
-      </div>
-    </div>
+      </CardFooter>
+    </Card>
   )
 }

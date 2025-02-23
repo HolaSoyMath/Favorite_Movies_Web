@@ -40,7 +40,11 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>
 
-export default function NavBar() {
+export interface NavBarProps {
+  className?: string
+}
+
+export default function NavBar({className}: NavBarProps) {
   const { setTheme } = useTheme()
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +60,7 @@ export default function NavBar() {
   }
 
   return (
-    <div className="py-5 px-12 bg-[--background] flex w-full justify-between">
+    <div className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}>
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
           <Link href="#" className="mx-5">
