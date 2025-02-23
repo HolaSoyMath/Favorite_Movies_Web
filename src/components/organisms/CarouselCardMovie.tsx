@@ -43,7 +43,7 @@ export default function CarouselCardMovie({ className }: CarouselMovieProps) {
                   idMovie: movie.id.toString(),
                   poster: movie.poster_path,
                 }}
-                className=" h-full w-[200px]"
+                className="h-full w-[200px]"
               />
             </CarouselItem>
           ))}

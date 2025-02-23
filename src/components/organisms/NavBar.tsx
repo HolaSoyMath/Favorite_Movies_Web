@@ -9,12 +9,8 @@ import {
   Clapperboard,
   Heart,
   House,
-  LogOut,
-  Moon,
   Search,
   Star,
-  Sun,
-  User,
 } from 'lucide-react'
 import Image from 'next/image'
 import { NavBarButton } from '@/components/atoms/NavBar/NavBarButton'
@@ -23,16 +19,8 @@ import { Input } from '@/components/ui/input'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Label } from '@radix-ui/react-label'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { useTheme } from 'next-themes'
-import { Button } from '@/components/ui/button'
+import { ThemeChoice } from '../molecules/ThemeChoice'
+import { ProfileDropdown } from '../molecules/ProfileDropdown'
 
 const formSchema = z.object({
   search: z.string().nonempty(),
@@ -45,8 +33,6 @@ export interface NavBarProps {
 }
 
 export default function NavBar({className}: NavBarProps) {
-  const { setTheme } = useTheme()
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -99,52 +85,8 @@ export default function NavBar({className}: NavBarProps) {
           </Form>
           <NavBarButton icon={Star} link="#" />
           <NavBarButton icon={Heart} link="#" />
-
-          <DropdownMenu>
-            <DropdownMenuTrigger
-              asChild
-              className="text-[--foreground] flex h-12 w-12 px-3 justify-center items-center transition-all duration-300 hover:bg-[var(--hover-color)] rounded-lg border-none focus-visible:ring-0 shadow-none"
-            >
-              <Button variant="outline" className="p-0">
-                <Sun className="absolute w-6 h-6  rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                <Moon className="absolute w-6 h-6 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                <span className="sr-only">Toggle theme</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setTheme('light')}>
-                Light
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('dark')}>
-                Dark
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme('system')}>
-                System
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center hover:bg-[var(--hover-color)] rounded-xl h-12 px-6 cursor-pointer transition-all duration-300">
-              <Label className="text-[--foreground] cursor-pointer">
-                Matheus Santos
-              </Label>
-              <Avatar className="ml-4">
-                <AvatarImage src="https://github.com/shadcn.png" />
-                <AvatarFallback>Ícone Avatar</AvatarFallback>
-              </Avatar>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="bg-[#343A40] text-white border-none">
-              <DropdownMenuItem className="cursor-pointer">
-                <User />
-                Perfil
-              </DropdownMenuItem>
-              <DropdownMenuItem className="cursor-pointer">
-                <LogOut />
-                Sair
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <ThemeChoice />
+          <ProfileDropdown name='Matheus Santos'/>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
