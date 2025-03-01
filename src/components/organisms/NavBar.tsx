@@ -13,7 +13,7 @@ import {
   Star,
 } from 'lucide-react'
 import Image from 'next/image'
-import { NavBarButton } from '@/components/atoms/NavBar/NavBarButton'
+import { NavBarButton } from '../atoms/NavBarButton'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { z } from 'zod'
@@ -49,7 +49,7 @@ export default function NavBar({className}: NavBarProps) {
     <div className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}>
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
-          <Link href="#" className="mx-5">
+          <Link href="/" className="mx-5">
             <Image
               src="/images/AmazonPrime.png"
               alt="Logo Amazon Prime"
@@ -57,7 +57,7 @@ export default function NavBar({className}: NavBarProps) {
               height="50"
             />
           </Link>
-          <NavBarButton icon={House} text="Home" link="#" />
+          <NavBarButton icon={House} text="Home" link="/" />
           <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
         </NavigationMenuList>
       </NavigationMenu>

@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import { Ratings } from '../../atoms/Movie/Ratings'
+import { Ratings } from '../../atoms/Ratings'
 import React from 'react'
 
 export interface ScoreAndFavoriteProps extends HTMLAttributes<HTMLDivElement> {
