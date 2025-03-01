@@ -5,13 +5,7 @@ import {
   NavigationMenuList,
 } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
-import {
-  Clapperboard,
-  Heart,
-  House,
-  Search,
-  Star,
-} from 'lucide-react'
+import { Clapperboard, Heart, House, Search, Star } from 'lucide-react'
 import Image from 'next/image'
 import { NavBarButton } from '../atoms/NavBarButton'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
@@ -32,7 +26,7 @@ export interface NavBarProps {
   className?: string
 }
 
-export default function NavBar({className}: NavBarProps) {
+export default function NavBar({ className }: NavBarProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,7 +40,9 @@ export default function NavBar({className}: NavBarProps) {
   }
 
   return (
-    <div className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}>
+    <div
+      className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}
+    >
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
           <Link href="/" className="mx-5">
@@ -86,7 +82,7 @@ export default function NavBar({className}: NavBarProps) {
           <NavBarButton icon={Star} link="#" />
           <NavBarButton icon={Heart} link="#" />
           <ThemeChoice />
-          <ProfileDropdown name='Matheus Santos'/>
+          <ProfileDropdown name="Matheus Santos" />
         </NavigationMenuList>
       </NavigationMenu>
     </div>

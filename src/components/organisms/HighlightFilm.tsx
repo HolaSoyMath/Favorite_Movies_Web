@@ -29,7 +29,7 @@ export default function HighlightFilm({
     >
       <div className="w-full h-full bg-gradient-to-r dark:from-zinc-950 to-transparent px-12 py-36 flex">
         <div className="flex flex-col w-1/2">
-          <LabelFilm variant="titleHighlightFilme" fontSize="titleHighlight">
+          <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
             {nameMovie}
           </LabelFilm>
           <Label className="text-xl mb-5 text-white">{description}</Label>

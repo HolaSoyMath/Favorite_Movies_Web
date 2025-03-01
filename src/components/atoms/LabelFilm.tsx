@@ -3,7 +3,7 @@ import { cn } from '@/lib/utils'
 import { tv } from 'tailwind-variants'
 
 export interface LabelFilmProps extends HTMLAttributes<HTMLParagraphElement> {
-  variant: 'titleCard' | 'titleHighlightFilme' | 'description' | 'descriptionHighlightFilm'
+  variant: 'titleCard' | 'titleHighlightFilm' | 'description' | 'descriptionHighlightFilm'
   fontSize?: 'xxs' | 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'titleHighlight'
   fontWeight?: 'normal' | 'semiBold' | 'bold' | 'extraBold'
   className?: string
@@ -16,7 +16,7 @@ const labelFilmVariant = tv({
       titleCard: 'h-[30px]',
       description: 'overflow-hidden h-[70px]',
       titleHighlightFilm: 'text-6xl mb-5 text-white',
-      descriptionHighlightFilm: '',
+      descriptionHighlightFilm: 'h-auto',
     },
     fontSize: {
       xxs: 'text-[10px]',

@@ -9,11 +9,12 @@ export interface CustomButtonProps extends HTMLAttributes<HTMLButtonElement> {
     Omit<LucideProps, 'ref'> & React.RefAttributes<SVGSVGElement>
   >
   text?: string
+  className?: string
 }
 
 export function CustomButton(params: CustomButtonProps) {
   return (
-    <Button className="align-middle justify-center rounded-full h-full">
+    <Button className={`align-middle justify-center rounded-full h-full ${params.className}`}>
       <LabelIcon icon={params.icon}>{params.text}</LabelIcon>
     </Button>
   )
