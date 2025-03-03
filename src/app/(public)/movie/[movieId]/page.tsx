@@ -2,37 +2,99 @@
 import { LabelFilm } from '@/components/atoms/LabelFilm'
 import { Ratings } from '@/components/atoms/Ratings'
 import CardRating from '@/components/molecules/CardRating'
+import { CommentMovie } from '@/components/molecules/CommentMovie'
 import { CustomButton } from '@/components/molecules/CustomButton'
 import { LabelIcon } from '@/components/molecules/LabelIcon'
+import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
 import CarouselCardPeople from '@/components/organisms/CarouselCardPeople'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
-import { Calendar, Clock4, Film, Heart, Share2 } from 'lucide-react'
+import { infoMovieCast } from '@/mock/InfoMovieCast.mock'
+import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
+import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Calendar,
+  Clock4,
+  Film,
+  Heart,
+  MessageSquare,
+  Share2,
+} from 'lucide-react'
 import React, { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
 
-const urlPosterImg = '/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg'
-const urlCardPosterImg = '/tfM1T6tAivjvy0sLwt6Y9WvlmzB.jpg'
+// Dados Mockados
 const pathImage = 'https://github.com/shadcn.png'
+const movieCast = infoMovieCast
+const movieDetails = infoMoviesDetails
+
+// Funções
+const formSchema = z.object({
+  comment: z.string().nonempty(),
+})
+
+type FormValues = z.infer<typeof formSchema>
 
 export default function MoviePage() {
   const [rating, setRating] = useState(0)
 
+  function convertMinutesToHours(minutes: number) {
+    const hours = Math.floor(minutes / 60);
+    const mins = minutes % 60;
+    return `${hours}h ${mins}min`;
+  }
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      comment: '',
+    },
+  })
+
+  function onSubmitHandle(data: FormValues) {
+    console.log(data.comment)
+  }
+
   function emojiRating(value: number): string {
     switch (value) {
       case 1:
-        return "😞";
+        return '😞'
       case 2:
-        return "😕";
+        return '😕'
       case 3:
-        return "🙂";
+        return '🙂'
       case 4:
-        return "😃";
+        return '😃'
       case 5:
-        return "🤩";
+        return '🤩'
       default:
-        return "";
+        return ''
     }
   }
+
+  const actors = movieCast.cast.filter(
+    (member) => member.known_for_department == 'Acting'
+  )
+  const director = movieCast.crew.find((member) => member.job == 'Director')
+
+  const infosCard = [
+    director?.name && {
+      name: director.name,
+      character: director.job,
+      pathImg: director.profile_path,
+      personId: director.id,
+    },
+    ...actors
+      .filter((actor) => actor.profile_path)
+      .map((actor) => ({
+        name: actor.name,
+        character: actor.character,
+        pathImg: actor.profile_path,
+        personId: actor.id,
+      })),
+  ].filter(Boolean)
 
   return (
     <>
@@ -40,29 +102,29 @@ export default function MoviePage() {
         id="headerFilm"
         className={`w-full h-[700px] bg-cover bg-no-repeat`}
         style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w780/${urlPosterImg})`,
+          backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movieDetails.backdrop_path})`,
         }}
       >
         <div className="w-full h-full bg-gradient-to-t from-zinc-950 to-transparent px-12 py-36 flex">
           <div
             style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w780/${urlCardPosterImg})`,
+              backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movieDetails.poster_path})`,
             }}
             className="h-[450px] w-[300px] bg-cover"
           />
           <div className="pl-10 w-1/2">
             <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
-              Sonic the Hedgehog 3
+              {movieDetails.title}
             </LabelFilm>
             <div className="flex gap-6 mt-3">
               <LabelIcon icon={Calendar} className="text-white">
-                2022
+                {movieDetails.release_date.substring(0,4)}
               </LabelIcon>
               <LabelIcon icon={Clock4} className="text-white">
-                3h 12min
+                {convertMinutesToHours(movieDetails.runtime)}
               </LabelIcon>
               <LabelIcon icon={Film} className="text-white">
-                Ação, Aventura, Ficção Científica
+                {movieDetails.genres.map(genre => genre.name).join(', ')}
               </LabelIcon>
             </div>
             <LabelFilm
@@ -70,11 +132,7 @@ export default function MoviePage() {
               fontWeight="normal"
               className="mt-10 text-white"
             >
-              Sonic, Knuckles e Tails se reúnem contra um novo e poderoso
-              adversário, Shadow, um vilão misterioso com poderes diferentes de
-              tudo que eles já enfrentaram antes. Com suas habilidades superadas
-              em todos os sentidos, a Equipe Sonic deve buscar uma aliança
-              improvável na esperança de parar Shadow e proteger o planeta.
+              {movieDetails.overview}
             </LabelFilm>
             <div className="flex gap-6 mt-5">
               <CardRating fontData="TMDB" rating={7.8} quantity={1250} />
@@ -95,35 +153,84 @@ export default function MoviePage() {
           </div>
         </div>
       </section>
-      <section className="px-12 mt-5">
-        <CarouselCardPeople />
-        <Label className="text-4xl font-semibold text-[--foreground]">
-          Sua Avaliação
-        </Label>
-        <div className='flex items-center'>
-          <Ratings
-            type="star"
-            value={rating}
-            onChange={setRating}
-            quantity={5}
-            className="!w-[300px] h-[100px] gap-5"
-          />
-          {rating > 0 && <span className='ml-5 text-xl'>{`Você avaliou este filme com ${rating} estrelas! ${emojiRating(rating)}`}</span>}
+      <section className="px-12">
+        <section className="my-5">
+          <CarouselCardPeople cast={infosCard} />
+          <Label className="text-4xl font-semibold text-[--foreground]">
+            Sua Avaliação
+          </Label>
+          <div className="flex items-center">
+            <Ratings
+              type="star"
+              value={rating}
+              onChange={setRating}
+              quantity={5}
+              className="!w-[300px] h-[100px] gap-5"
+            />
+            {rating > 0 && (
+              <span className="ml-5 text-xl">{`Você avaliou este filme com ${rating} estrelas! ${emojiRating(
+                rating
+              )}`}</span>
+            )}
+          </div>
+        </section>
+        <section className="my-5">
+          <Label className="text-4xl font-semibold text-[--foreground]">
+            Comentários
+          </Label>
+          <div className="flex gap-4 mt-5">
+            <Avatar className="ml-4">
+              <AvatarImage src={pathImage} />
+              <AvatarFallback>Ícone Avatar</AvatarFallback>
+            </Avatar>
 
-        </div>
-        <Label className="text-4xl font-semibold text-[--foreground]">
-          Comentários
-        </Label>
-        <div className="flex gap-4">
-          <Avatar className="ml-4">
-            <AvatarImage src={pathImage} />
-            <AvatarFallback>Ícone Avatar</AvatarFallback>
-          </Avatar>
-          <textarea
-            placeholder="Escreva seu comentário..."
-            className="h-[100px] w-full text-left p-2"
-          ></textarea>
-        </div>
+            <Form {...form}>
+              <form
+                className="w-full"
+                onSubmit={form.handleSubmit(onSubmitHandle)}
+              >
+                <FormField
+                  control={form.control}
+                  name="comment"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <textarea
+                          placeholder="Escreva seu comentário..."
+                          className="h-[100px] w-full text-left p-2 border-[--border] border rounded-lg"
+                          {...field}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
+                <CustomButton
+                  icon={MessageSquare}
+                  text="Comentar"
+                  className="rounded-3xl h-13"
+                />
+              </form>
+            </Form>
+          </div>
+          <CommentMovie
+            avatarImg={pathImage}
+            name="João Silva"
+            date="2024-03-15"
+          >
+            Um dos melhores filmes que já assisti! A cinematografia é
+            impressionante. Um dos melhores filmes que já assisti! A
+            cinematografia é impressionante. Um dos melhores filmes que já
+            assisti! A cinematografia é impressionante. Um dos melhores filmes
+            que já assisti! A cinematografia é impressionante. Um dos melhores
+            filmes que já assisti! A cinematografia é impressionante. Um dos
+            melhores filmes que já assisti! A cinematografia é impressionante.
+            Um dos melhores filmes que já assisti! A cinematografia é
+            impressionante.
+          </CommentMovie>
+        </section>
+      </section>
+      <section className="px-12 w-full mt-5">
+        <CarouselCardMovie title='Recomendados' className="px-10" />
       </section>
     </>
   )

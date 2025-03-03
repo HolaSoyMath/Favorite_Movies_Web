@@ -2,21 +2,28 @@ import React from 'react'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
 import HighlightFilm from '@/components/organisms/HighlightFilm'
 import Footer from '@/components/molecules/Footer'
+import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
+import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
+
+const movieDetails = infoMoviesDetails
+const movieTrailer: string = infoMovieVideos.results.find(movie => movie.type == 'Trailer')!.key
 
 export function HomePage() {
+
+  console.log(movieTrailer);
+
   return (
     <>
       <HighlightFilm
-        urlPosterImg="/vL5LR6WdxWPjLPFRLe133jXWsh5.jpg"
-        idMovie="76600"
-        nameMovie="Avatar: The Way of Water"
-        description="12 anos depois de explorar Pandora e se juntar aos Na'vi, Jake Sully formou uma família com Neytiri e se estabeleceu entre os clãs do novo mundo. Porém, a paz não durará para sempre."
-        trailerUrl="mBrl8b-pVdw"
+        urlPosterImg={movieDetails.backdrop_path}
+        idMovie={movieDetails.id.toString()}
+        nameMovie={movieDetails.title}
+        description={movieDetails.overview}
+        trailerUrl={movieTrailer}
       />
       <div className="px-12 w-full mt-3">
-        <CarouselCardMovie className="px-10"></CarouselCardMovie>
+        <CarouselCardMovie className="px-10" title='Em Cartaz'></CarouselCardMovie>
       </div>
-      <Footer />
     </>
   )
 }

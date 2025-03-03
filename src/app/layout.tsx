@@ -4,6 +4,7 @@ import './globals.css'
 import React from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import NavBar from '@/components/organisms/NavBar'
+import Footer from '@/components/molecules/Footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -43,6 +44,7 @@ export default function RootLayout({
           </div>
         </ThemeProvider>
       </body>
+      <Footer />
     </html>
   )
 }

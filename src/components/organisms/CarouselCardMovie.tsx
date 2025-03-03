@@ -12,17 +12,18 @@ import { CardMovie } from './CardMovie'
 import { Label } from '../ui/label'
 
 export interface CarouselMovieProps extends HTMLAttributes<HTMLDivElement> {
+  title: string
   className?: string
 }
 
-export default function CarouselCardMovie({ className }: CarouselMovieProps) {
+export default function CarouselCardMovie({ title, className }: CarouselMovieProps) {
   const movies = mockInfoMovies.results
   const genres = mockGenreList.genres
 
   return (
     <>
       <Label className="text-4xl font-semibold text-[--foreground]">
-        Em cartaz
+        {title}
       </Label>
       <Carousel
         opts={{ loop: true }}
@@ -31,7 +32,7 @@ export default function CarouselCardMovie({ className }: CarouselMovieProps) {
       >
         <CarouselContent className="h-[460px]">
           {movies.map((movie) => (
-            <CarouselItem className="basis-1/7" key={''}>
+            <CarouselItem className="basis-1/7" key={movie.id.toString()}>
               <CardMovie
                 movie={{
                   genre: genres.find(

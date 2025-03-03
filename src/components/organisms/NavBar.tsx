@@ -2,6 +2,7 @@
 import React from 'react'
 import {
   NavigationMenu,
+  NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
@@ -27,7 +28,6 @@ export interface NavBarProps {
 }
 
 export default function NavBar({ className }: NavBarProps) {
-  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,20 +42,26 @@ export default function NavBar({ className }: NavBarProps) {
 
   return (
     <div
-      className={`dark:bg-[#09090B] bg-[#ffffff] py-5 px-12 flex w-full justify-between fixed top-0 left-0 z-50${className}}`}
+      className={`dark:bg-[#09090B] bg-[#ffffff] h-[80px] py-5 px-12 flex w-full justify-between fixed top-0 left-0 z-50 ${className}`}
     >
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
-          <Link href="/" className="mx-5">
-            <Image
-              src="/images/AmazonPrime.png"
-              alt="Logo Amazon Prime"
-              width="150"
-              height="50"
-            />
-          </Link>
-          <NavBarButton icon={House} text="Home" link="/" />
-          <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
+          <NavigationMenuItem>
+            <Link href="/" className="mx-5">
+              <Image
+                src="/images/AmazonPrime.png"
+                alt="Logo Amazon Prime"
+                width="150"
+                height="50"
+              />
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={House} text="Home" link="/" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
       <NavigationMenu>
@@ -80,10 +86,18 @@ export default function NavBar({ className }: NavBarProps) {
               />
             </form>
           </Form>
-          <NavBarButton icon={Star} link="#" />
-          <NavBarButton icon={Heart} link="#" />
-          <ThemeChoice />
-          <ProfileDropdown name="Matheus Santos" />
+          <NavigationMenuItem>
+            <NavBarButton icon={Star} link="#" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={Heart} link="#" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <ThemeChoice />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <ProfileDropdown name="Matheus Santos" />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>
