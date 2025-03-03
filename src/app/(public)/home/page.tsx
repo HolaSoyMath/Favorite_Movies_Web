@@ -1,7 +1,6 @@
 import React from 'react'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
 import HighlightFilm from '@/components/organisms/HighlightFilm'
-import Footer from '@/components/molecules/Footer'
 import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
 import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
 

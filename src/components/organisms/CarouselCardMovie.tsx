@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import { mockInfoMovies } from '@/mock/InfoMovies.mock'
+import { mockCarouselInfoMovies } from '@/mock/MoviesCarousel.mock'
 import { mockGenreList } from '@/mock/GenreMovieList.mock'
 import {
   Carousel,
@@ -17,7 +17,7 @@ export interface CarouselMovieProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 export default function CarouselCardMovie({ title, className }: CarouselMovieProps) {
-  const movies = mockInfoMovies.results
+  const movies = mockCarouselInfoMovies.results
   const genres = mockGenreList.genres
 
   return (
