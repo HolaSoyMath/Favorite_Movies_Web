@@ -31,8 +31,8 @@ export function InfosMovieCard({
 }: InfosMovieCard) {
   return (
     <div className={cn(infosMovieVariant({}), className)} {...props}>
-      <LabelFilm variant="title" fontSize="lg" className="h-35 text-left">
-        {title}{' '}
+      <LabelFilm variant="titleCard" fontSize="lg" className="h-35 text-left">
+        {title}
       </LabelFilm>
       <LabelFilm
         variant="description"

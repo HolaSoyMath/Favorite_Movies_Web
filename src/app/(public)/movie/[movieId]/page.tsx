@@ -6,7 +6,7 @@ import { CommentMovie } from '@/components/molecules/CommentMovie'
 import { CustomButton } from '@/components/molecules/CustomButton'
 import { LabelIcon } from '@/components/molecules/LabelIcon'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
-import CarouselCardPeople from '@/components/organisms/CarouselCardPeople'
+import CarouselCardPeople, { Cast } from '@/components/organisms/CarouselCardPeople'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
@@ -41,9 +41,9 @@ export default function MoviePage() {
   const [rating, setRating] = useState(0)
 
   function convertMinutesToHours(minutes: number) {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}min`;
+    const hours = Math.floor(minutes / 60)
+    const mins = minutes % 60
+    return `${hours}h ${mins}min`
   }
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -79,22 +79,28 @@ export default function MoviePage() {
   )
   const director = movieCast.crew.find((member) => member.job == 'Director')
 
-  const infosCard = [
-    director?.name && {
-      name: director.name,
-      character: director.job,
-      pathImg: director.profile_path,
-      personId: director.id,
-    },
-    ...actors
-      .filter((actor) => actor.profile_path)
-      .map((actor) => ({
-        name: actor.name,
-        character: actor.character,
-        pathImg: actor.profile_path,
-        personId: actor.id,
-      })),
-  ].filter(Boolean)
+  const directorObj = director
+    ? {
+        name: director.name,
+        character: director.job,
+        pathImg: director.profile_path,
+        personId: String(director.id), // converte para string se necessário
+      }
+    : null
+
+  const actorObjs = actors
+    .filter((actor) => actor.profile_path)
+    .map((actor) => ({
+      name: actor.name,
+      character: actor.character,
+      pathImg: actor.profile_path,
+      personId: String(actor.id), // garante que personId seja uma string
+    }))
+
+  const infosCard: Cast[] = [
+    ...(directorObj ? [directorObj] : []),
+    ...actorObjs,
+  ]
 
   return (
     <>
@@ -118,13 +124,13 @@ export default function MoviePage() {
             </LabelFilm>
             <div className="flex gap-6 mt-3">
               <LabelIcon icon={Calendar} className="text-white">
-                {movieDetails.release_date.substring(0,4)}
+                {movieDetails.release_date.substring(0, 4)}
               </LabelIcon>
               <LabelIcon icon={Clock4} className="text-white">
                 {convertMinutesToHours(movieDetails.runtime)}
               </LabelIcon>
               <LabelIcon icon={Film} className="text-white">
-                {movieDetails.genres.map(genre => genre.name).join(', ')}
+                {movieDetails.genres.map((genre) => genre.name).join(', ')}
               </LabelIcon>
             </div>
             <LabelFilm
@@ -230,7 +236,7 @@ export default function MoviePage() {
         </section>
       </section>
       <section className="px-12 w-full mt-5">
-        <CarouselCardMovie title='Recomendados' className="px-10" />
+        <CarouselCardMovie title="Recomendados" className="px-10" />
       </section>
     </>
   )

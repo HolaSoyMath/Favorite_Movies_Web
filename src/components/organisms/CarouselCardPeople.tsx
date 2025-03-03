@@ -9,10 +9,10 @@ import {
 import { Label } from '../ui/label'
 import CardPeople from '../molecules/CardPeople'
 
-interface Cast{
+export interface Cast{
   name: string
   character: string
-  pathImg: string
+  pathImg: string | null
   personId: string
 }
 export interface CarouselPeopleProps extends HTMLAttributes<HTMLDivElement> {
@@ -34,7 +34,7 @@ export default function CarouselCardPeople({cast, className}: CarouselPeopleProp
         <CarouselContent className="h-[400px]">
           {cast.map((people) => (
             <CarouselItem className="basis-1/7" key={people.personId}>
-              <CardPeople character={people.character} name={people.name} pathImage={people.pathImg}/>
+              <CardPeople character={people.character} name={people.name} pathImage={people.pathImg ?? 'https://github.com/shadcn.png'}/>
             </CarouselItem>
           ))}
         </CarouselContent>
