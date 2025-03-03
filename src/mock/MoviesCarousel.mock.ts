@@ -1,4 +1,4 @@
-export const mockInfoMovies = {
+export const mockCarouselInfoMovies = {
   "dates": {
     "maximum": "2025-02-26",
     "minimum": "2025-01-15"

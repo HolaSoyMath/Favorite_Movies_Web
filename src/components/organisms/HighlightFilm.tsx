@@ -1,7 +1,9 @@
-import { ButtonWithIcon } from '@/components/atoms/ButtonWithIcon'
+import { CustomButton } from '@/components/molecules/CustomButton'
 import { Label } from '@/components/ui/label'
 import { Info } from 'lucide-react'
 import React, { HTMLAttributes } from 'react'
+import { LabelFilm } from '../atoms/LabelFilm'
+import Link from 'next/link'
 
 export interface HighlightFilmProps extends HTMLAttributes<HTMLDivElement> {
   urlPosterImg: string
@@ -27,9 +29,13 @@ export default function HighlightFilm({
     >
       <div className="w-full h-full bg-gradient-to-r dark:from-zinc-950 to-transparent px-12 py-36 flex">
         <div className="flex flex-col w-1/2">
-          <Label className="text-6xl font-semibold mb-5 text-white">{nameMovie}</Label>
+          <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
+            {nameMovie}
+          </LabelFilm>
           <Label className="text-xl mb-5 text-white">{description}</Label>
-          <ButtonWithIcon icon={Info} link={idMovie} text="Mais Informações" />
+          <Link href={`movie/${idMovie}`} className="flex items-center h-12">
+            <CustomButton icon={Info} text="Mais Informações" />
+          </Link>
         </div>
         <div className="flex w-1/2 justify-center">
           <iframe

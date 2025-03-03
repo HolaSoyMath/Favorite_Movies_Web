@@ -2,18 +2,13 @@
 import React from 'react'
 import {
   NavigationMenu,
+  NavigationMenuItem,
   NavigationMenuList,
 } from '@/components/ui/navigation-menu'
 import Link from 'next/link'
-import {
-  Clapperboard,
-  Heart,
-  House,
-  Search,
-  Star,
-} from 'lucide-react'
+import { Clapperboard, Heart, House, Search, Star } from 'lucide-react'
 import Image from 'next/image'
-import { NavBarButton } from '@/components/atoms/NavBar/NavBarButton'
+import { NavBarButton } from '../atoms/NavBarButton'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { z } from 'zod'
@@ -32,7 +27,7 @@ export interface NavBarProps {
   className?: string
 }
 
-export default function NavBar({className}: NavBarProps) {
+export default function NavBar({ className }: NavBarProps) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -46,19 +41,27 @@ export default function NavBar({className}: NavBarProps) {
   }
 
   return (
-    <div className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}>
+    <div
+      className={`dark:bg-[#09090B] bg-[#ffffff] h-[80px] py-5 px-12 flex w-full justify-between fixed top-0 left-0 z-50 ${className}`}
+    >
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
-          <Link href="#" className="mx-5">
-            <Image
-              src="/images/AmazonPrime.png"
-              alt="Logo Amazon Prime"
-              width="150"
-              height="50"
-            />
-          </Link>
-          <NavBarButton icon={House} text="Home" link="#" />
-          <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
+          <NavigationMenuItem>
+            <Link href="/" className="mx-5">
+              <Image
+                src="/images/AmazonPrime.png"
+                alt="Logo Amazon Prime"
+                width="150"
+                height="50"
+              />
+            </Link>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={House} text="Home" link="/" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
       <NavigationMenu>
@@ -69,7 +72,7 @@ export default function NavBar({className}: NavBarProps) {
                 control={form.control}
                 name="search"
                 render={({ field }) => (
-                  <FormItem className="flex items-center h-12 rounded-full pl-4 bg-transparent border-2 dark:bg-[#343A40]  ">
+                  <FormItem className="flex items-center h-12 rounded-full pl-4 bg-transparent border-2 dark:bg-[#343A40]">
                     <Search className="text-[--foreground]" />
                     <FormControl>
                       <Input
@@ -83,10 +86,18 @@ export default function NavBar({className}: NavBarProps) {
               />
             </form>
           </Form>
-          <NavBarButton icon={Star} link="#" />
-          <NavBarButton icon={Heart} link="#" />
-          <ThemeChoice />
-          <ProfileDropdown name='Matheus Santos'/>
+          <NavigationMenuItem>
+            <NavBarButton icon={Star} link="#" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavBarButton icon={Heart} link="#" />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <ThemeChoice />
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <ProfileDropdown name="Matheus Santos" />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>

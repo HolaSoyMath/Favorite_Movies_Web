@@ -1,6 +1,6 @@
 'use client'
-import { HomePage } from '@/components/template/Home'
 import React from 'react'
+import { HomePage } from './(public)/home/page'
 
 export default function Home() {
   return (
