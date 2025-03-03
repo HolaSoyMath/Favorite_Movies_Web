@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import { BadgeCard } from '../../atoms/Movie/BadgeCard'
+import { BadgeCard } from '../../atoms/BadgeCard'
 
 export interface CardTopProps extends HTMLAttributes<HTMLDivElement> {
   genre: string

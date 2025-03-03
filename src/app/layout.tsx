@@ -4,6 +4,7 @@ import './globals.css'
 import React from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import NavBar from '@/components/organisms/NavBar'
+import Footer from '@/components/molecules/Footer'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -18,8 +19,8 @@ const geistMono = Geist_Mono({
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-});
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'MathFlix',
@@ -38,9 +39,12 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NavBar />
-          {children}
+          <div className="mt-[80px]">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
+      <Footer />
     </html>
   )
 }

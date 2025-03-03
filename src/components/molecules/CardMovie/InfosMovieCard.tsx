@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react'
-import { TextCard } from '../../atoms/Movie/TextCard'
+import { LabelFilm } from '../../atoms/LabelFilm'
 import React from 'react'
 import { tv } from 'tailwind-variants'
 import { cn } from '@/lib/utils'
@@ -31,16 +31,16 @@ export function InfosMovieCard({
 }: InfosMovieCard) {
   return (
     <div className={cn(infosMovieVariant({}), className)} {...props}>
-      <TextCard variant="title" fontSize="lg" className="h-35 text-left">
+      <LabelFilm variant="title" fontSize="lg" className="h-35 text-left">
         {title}{' '}
-      </TextCard>
-      <TextCard
+      </LabelFilm>
+      <LabelFilm
         variant="description"
         fontSize="xxs"
         className="h-[calc(100%-30px)] text-left"
       >
         {description}
-      </TextCard>
+      </LabelFilm>
     </div>
   )
 }
