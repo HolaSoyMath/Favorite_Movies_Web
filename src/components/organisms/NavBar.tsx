@@ -27,6 +27,7 @@ export interface NavBarProps {
 }
 
 export default function NavBar({ className }: NavBarProps) {
+  
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -41,7 +42,7 @@ export default function NavBar({ className }: NavBarProps) {
 
   return (
     <div
-      className={`py-5 px-12 bg-[--background] flex w-full justify-between ${className}`}
+      className={`dark:bg-[#09090B] bg-[#ffffff] py-5 px-12 flex w-full justify-between fixed top-0 left-0 z-50${className}}`}
     >
       <NavigationMenu className="flex !w-[1000px]">
         <NavigationMenuList>
@@ -65,7 +66,7 @@ export default function NavBar({ className }: NavBarProps) {
                 control={form.control}
                 name="search"
                 render={({ field }) => (
-                  <FormItem className="flex items-center h-12 rounded-full pl-4 bg-transparent border-2 dark:bg-[#343A40]  ">
+                  <FormItem className="flex items-center h-12 rounded-full pl-4 bg-transparent border-2 dark:bg-[#343A40]">
                     <Search className="text-[--foreground]" />
                     <FormControl>
                       <Input

@@ -18,8 +18,8 @@ const geistMono = Geist_Mono({
 const poppins = Poppins({
   variable: '--font-poppins',
   subsets: ['latin'],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"]
-});
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+})
 
 export const metadata: Metadata = {
   title: 'MathFlix',
@@ -38,7 +38,9 @@ export default function RootLayout({
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <NavBar />
-          {children}
+          <div className="mt-[80px]">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>

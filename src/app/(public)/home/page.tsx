@@ -1,6 +1,7 @@
 import React from 'react'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
 import HighlightFilm from '@/components/organisms/HighlightFilm'
+import Footer from '@/components/molecules/Footer'
 
 export function HomePage() {
   return (
@@ -15,6 +16,7 @@ export function HomePage() {
       <div className="px-12 w-full mt-3">
         <CarouselCardMovie className="px-10"></CarouselCardMovie>
       </div>
+      <Footer />
     </>
   )
 }
