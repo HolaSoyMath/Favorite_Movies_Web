@@ -30,11 +30,11 @@ export default function ExplorerPage() {
       {/* {
         showFilter && 
       } */}
-        <section className='border-2 bg-[#ffffff] dark:bg-[#121217] rounded-xl px-5 py-5'>
-          <MultiSelect className='w-1/4 px-2' options={options}>Gênero</MultiSelect>
-          <MultiSelect className='w-1/4 px-2' options={options}>Gênero</MultiSelect>
-          <MultiSelect className='w-1/4 px-2' options={options}>Gênero</MultiSelect>
-          <MultiSelect className='w-1/4 px-2' options={options}>Gênero</MultiSelect>
+        <section className='border-2 bg-[#ffffff] dark:bg-[#121217] rounded-xl px-5 py-5 flex gap-4'>
+          <MultiSelect className='w-full px-2' options={options}>Gênero</MultiSelect>
+          <MultiSelect className='w-full px-2' options={options}>Ano</MultiSelect>
+          <MultiSelect className='w-full px-2' options={options}>Avaliação</MultiSelect>
+          <MultiSelect className='w-full px-2' options={options}>Ordenar por</MultiSelect>
         </section>
     </div>
   )
