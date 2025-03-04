@@ -60,7 +60,7 @@ export default function NavBar({ className }: NavBarProps) {
             <NavBarButton icon={House} text="Home" link="/" />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavBarButton icon={Clapperboard} text="Explorar" link="#" />
+            <NavBarButton icon={Clapperboard} text="Explorar" link="/explorer" />
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

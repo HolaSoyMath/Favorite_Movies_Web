@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react'
-import { BadgeCard } from '../../atoms/BadgeCard'
+import { BadgeInfo } from '../../atoms/Badge'
 
 export interface CardTopProps extends HTMLAttributes<HTMLDivElement> {
   genre: string
@@ -13,8 +13,8 @@ export function CardTop({ genre, year, ...props }: CardTopProps) {
       className="not-sr-only flex place-content-between px-[15px]"
       {...props}
     >
-      <BadgeCard text={genre} fontSize="xs" variant="category" />
-      <BadgeCard text={year} fontSize="xs" variant="year" />
+      <BadgeInfo fontSize="xs" variant="category">{genre}</BadgeInfo>
+      <BadgeInfo fontSize="xs" variant="year">{year}</BadgeInfo>
     </div>
   )
 }

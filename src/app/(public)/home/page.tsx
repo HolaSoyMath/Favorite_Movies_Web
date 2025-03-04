@@ -9,8 +9,6 @@ const movieTrailer: string = infoMovieVideos.results.find(movie => movie.type ==
 
 export default function HomePage() {
 
-  console.log(movieTrailer);
-
   return (
     <>
       <HighlightFilm

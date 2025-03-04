@@ -4,7 +4,7 @@ import React from 'react'
 
 export default function Footer(){
   return(
-    <footer className="mb-7">
+    <footer className="mb-7 mt-5">
         <div className="grid grid-cols-3">
           <div className="px-12">
             <div className="h-11">
