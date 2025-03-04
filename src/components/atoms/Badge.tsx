@@ -3,19 +3,20 @@ import { Badge } from '@/components/ui/badge'
 import { cn } from '@/lib/utils'
 import { tv } from 'tailwind-variants'
 
-export interface BadgeCardProps extends HTMLAttributes<HTMLDivElement> {
-  text: string
-  variant?: 'year' | 'category'
+export interface BadgeInfoProps extends HTMLAttributes<HTMLDivElement> {
+  variant?: 'year' | 'category' | 'filter'
   fontSize?: 'xs' | 'sm' | 'md' | 'lg' | 'xl'
   className?: string
+  children?: React.ReactNode
 }
 
-const badgeCardVariant = tv({
-  base: 'rounded-full font-semibold text-xl px-2 text-white',
+const badgeInfoVariant = tv({
+  base: 'rounded-full text-xl px-2 text-white',
   variants: {
     variant: {
-      year: 'bg-zinc-500 hover:bg-zinc-500',
-      category: 'bg-blue-400 hover:bg-blue-400',
+      year: 'bg-zinc-500 hover:bg-zinc-500 font-semibold',
+      category: 'bg-blue-400 hover:bg-blue-400 font-semibold',
+      filter: 'bg-blue-500 hover:bg-blue-500 font-normal',
     },
     fontSize: {
       xs: 'text-xs',
@@ -31,19 +32,19 @@ const badgeCardVariant = tv({
   },
 })
 
-export function BadgeCard({
+export function BadgeInfo({
   variant,
   fontSize,
-  text,
+  children,
   className,
   ...props
-}: BadgeCardProps) {
+}: BadgeInfoProps) {
   return (
     <Badge
-      className={cn(badgeCardVariant({ variant, fontSize }), className)}
+      className={cn(badgeInfoVariant({ variant, fontSize }), className)}
       {...props}
     >
-      {text}
+      {children}
     </Badge>
   )
 }

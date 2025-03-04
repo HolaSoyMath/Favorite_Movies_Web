@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import { ScoreAndFavorite } from '../molecules/CardMovie/ScoreAndFavorite'
 import { CardTop } from '../molecules/CardMovie/CardTop'

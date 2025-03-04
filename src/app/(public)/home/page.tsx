@@ -7,9 +7,7 @@ import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
 const movieDetails = infoMoviesDetails
 const movieTrailer: string = infoMovieVideos.results.find(movie => movie.type == 'Trailer')!.key
 
-export function HomePage() {
-
-  console.log(movieTrailer);
+export default function HomePage() {
 
   return (
     <>
