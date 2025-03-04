@@ -1,27 +1,20 @@
 'use client'
-import { LabelFilm } from '@/components/atoms/LabelFilm'
-import { Ratings } from '@/components/atoms/Ratings'
-import CardRating from '@/components/molecules/CardRating'
 import { CommentMovie } from '@/components/molecules/CommentMovie'
 import { CustomButton } from '@/components/molecules/CustomButton'
-import { LabelIcon } from '@/components/molecules/LabelIcon'
+import MovieRatings from '@/components/molecules/MovieRatings'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
-import CarouselCardPeople from '@/components/organisms/CarouselCardPeople'
+import CarouselCardPeople, {
+  Cast,
+} from '@/components/organisms/CarouselCardPeople'
+import MovieHeader from '@/components/organisms/MovieHeader'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
 import { infoMovieCast } from '@/mock/InfoMovieCast.mock'
 import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
 import { zodResolver } from '@hookform/resolvers/zod'
-import {
-  Calendar,
-  Clock4,
-  Film,
-  Heart,
-  MessageSquare,
-  Share2,
-} from 'lucide-react'
-import React, { useState } from 'react'
+import { MessageSquare } from 'lucide-react'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -38,14 +31,6 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>
 
 export default function MoviePage() {
-  const [rating, setRating] = useState(0)
-
-  function convertMinutesToHours(minutes: number) {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    return `${hours}h ${mins}min`;
-  }
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -57,122 +42,54 @@ export default function MoviePage() {
     console.log(data.comment)
   }
 
-  function emojiRating(value: number): string {
-    switch (value) {
-      case 1:
-        return '😞'
-      case 2:
-        return '😕'
-      case 3:
-        return '🙂'
-      case 4:
-        return '😃'
-      case 5:
-        return '🤩'
-      default:
-        return ''
-    }
-  }
-
   const actors = movieCast.cast.filter(
     (member) => member.known_for_department == 'Acting'
   )
   const director = movieCast.crew.find((member) => member.job == 'Director')
 
-  const infosCard = [
-    director?.name && {
-      name: director.name,
-      character: director.job,
-      pathImg: director.profile_path,
-      personId: director.id,
-    },
-    ...actors
-      .filter((actor) => actor.profile_path)
-      .map((actor) => ({
-        name: actor.name,
-        character: actor.character,
-        pathImg: actor.profile_path,
-        personId: actor.id,
-      })),
-  ].filter(Boolean)
+  const directorObj = director
+    ? {
+        name: director.name,
+        character: director.job,
+        pathImg: director.profile_path,
+        personId: String(director.id),
+      }
+    : null
+
+  const actorObjs = actors
+    .filter((actor) => actor.profile_path)
+    .map((actor) => ({
+      name: actor.name,
+      character: actor.character,
+      pathImg: actor.profile_path,
+      personId: String(actor.id),
+    }))
+
+  const infosCard: Cast[] = [
+    ...(directorObj ? [directorObj] : []),
+    ...actorObjs,
+  ]
 
   return (
     <>
-      <section
-        id="headerFilm"
-        className={`w-full h-[700px] bg-cover bg-no-repeat`}
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movieDetails.backdrop_path})`,
-        }}
-      >
-        <div className="w-full h-full bg-gradient-to-t from-zinc-950 to-transparent px-12 py-36 flex">
-          <div
-            style={{
-              backgroundImage: `url(https://image.tmdb.org/t/p/w780/${movieDetails.poster_path})`,
-            }}
-            className="h-[450px] w-[300px] bg-cover"
-          />
-          <div className="pl-10 w-1/2">
-            <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
-              {movieDetails.title}
-            </LabelFilm>
-            <div className="flex gap-6 mt-3">
-              <LabelIcon icon={Calendar} className="text-white">
-                {movieDetails.release_date.substring(0,4)}
-              </LabelIcon>
-              <LabelIcon icon={Clock4} className="text-white">
-                {convertMinutesToHours(movieDetails.runtime)}
-              </LabelIcon>
-              <LabelIcon icon={Film} className="text-white">
-                {movieDetails.genres.map(genre => genre.name).join(', ')}
-              </LabelIcon>
-            </div>
-            <LabelFilm
-              variant="descriptionHighlightFilm"
-              fontWeight="normal"
-              className="mt-10 text-white"
-            >
-              {movieDetails.overview}
-            </LabelFilm>
-            <div className="flex gap-6 mt-5">
-              <CardRating fontData="TMDB" rating={7.8} quantity={1250} />
-              <CardRating fontData="MathFlix" rating={0} quantity={0} />
-            </div>
-            <div className="flex gap-6 mt-5">
-              <CustomButton
-                icon={Heart}
-                text="Favorito"
-                className="h-12 bg-white text-black"
-              />
-              <CustomButton
-                icon={Share2}
-                text="Compartilhar"
-                className="h-12 bg-white text-black"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
+      <MovieHeader
+        title={movieDetails.title}
+        backgroundImg={movieDetails.backdrop_path}
+        posterImg={movieDetails.poster_path}
+        description={movieDetails.overview}
+        genres={movieDetails.genres.map((genre) => genre.name)}
+        minutes={movieDetails.runtime}
+        releaseYear={new Date(movieDetails.release_date).getFullYear()}
+      />
+
       <section className="px-12">
+        
         <section className="my-5">
           <CarouselCardPeople cast={infosCard} />
           <Label className="text-4xl font-semibold text-[--foreground]">
             Sua Avaliação
           </Label>
-          <div className="flex items-center">
-            <Ratings
-              type="star"
-              value={rating}
-              onChange={setRating}
-              quantity={5}
-              className="!w-[300px] h-[100px] gap-5"
-            />
-            {rating > 0 && (
-              <span className="ml-5 text-xl">{`Você avaliou este filme com ${rating} estrelas! ${emojiRating(
-                rating
-              )}`}</span>
-            )}
-          </div>
+          <MovieRatings />
         </section>
         <section className="my-5">
           <Label className="text-4xl font-semibold text-[--foreground]">
@@ -207,7 +124,7 @@ export default function MoviePage() {
                 <CustomButton
                   icon={MessageSquare}
                   text="Comentar"
-                  className="rounded-3xl h-13"
+                  className="rounded-3xl h-[3rem]"
                 />
               </form>
             </Form>
@@ -229,9 +146,7 @@ export default function MoviePage() {
           </CommentMovie>
         </section>
       </section>
-      <section className="px-12 w-full mt-5">
-        <CarouselCardMovie title='Recomendados' className="px-10" />
-      </section>
+      <CarouselCardMovie title="Recomendados" className="px-12 w-full mt-5" />
     </>
   )
 }
