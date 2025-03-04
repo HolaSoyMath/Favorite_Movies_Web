@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
@@ -13,11 +13,23 @@ import { ChevronDown } from 'lucide-react'
 interface MultiSelectProps {
   options: { value: string; label: string }[]
   children?: React.ReactNode
-  className?: React.ReactNode
+  className?: string
 }
 
-export function MultiSelect({ options, children, className }: MultiSelectProps) {
+export function MultiSelect({
+  options,
+  children,
+  className,
+}: MultiSelectProps) {
   const [selected, setSelected] = useState<string[]>([])
+  const triggerRef = useRef<HTMLButtonElement | null>(null)
+  const [width, setWidth] = useState('auto')
+
+  useEffect(() => {
+    if (triggerRef.current) {
+      setWidth(`${triggerRef.current.offsetWidth}px`);
+    }
+  }, []);
 
   const toggleSelection = (value: string) => {
     setSelected((prev) =>
@@ -28,14 +40,20 @@ export function MultiSelect({ options, children, className }: MultiSelectProps) 
   }
 
   return (
-    <DropdownMenu >
+    <DropdownMenu>
       <DropdownMenuTrigger asChild className={`${className}`}>
-        <Button className={`dark:bg-zinc-500 dark:hover:bg-zinc-600 bg-zinc-200 hover:bg-zinc-300 text-[--foreground] border-zinc-200 border-1 justify-between`}>
+        <Button
+          ref={triggerRef}
+          className={`dark:bg-zinc-500 dark:hover:bg-zinc-600 bg-zinc-200 hover:bg-zinc-300 text-[--foreground] border-zinc-200 border-1 justify-between`}
+        >
           <span>{children}</span>
           <ChevronDown />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent
+        className="w-[var(--trigger-width)]"
+        style={{ width }}
+      >
         {options.map((option) => (
           <ItemMultiSelect
             key={option.value}
