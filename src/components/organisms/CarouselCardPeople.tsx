@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from '../ui/carousel'
 import { Label } from '../ui/label'
-import CardPeople from '../molecules/CardPeople'
+import CardPeople from './CardPeople'
 
 export interface Cast{
   name: string

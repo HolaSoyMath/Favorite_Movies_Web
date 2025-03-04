@@ -20,9 +20,10 @@ export default function HomePage() {
         description={movieDetails.overview}
         trailerUrl={movieTrailer}
       />
-      <div className="px-12 w-full mt-3">
-        <CarouselCardMovie className="px-10" title='Em Cartaz'></CarouselCardMovie>
-      </div>
+        <CarouselCardMovie className="px-12 w-full mt-5" title='Em Cartaz'></CarouselCardMovie>
+        <CarouselCardMovie className="px-12 w-full mt-5" title='Populares'></CarouselCardMovie>
+        <CarouselCardMovie className="px-12 w-full mt-5" title='Mais Bem Avaliados'></CarouselCardMovie>
+        <CarouselCardMovie className="px-12 w-full mt-5" title='Próximos Lançamentos'></CarouselCardMovie>
     </>
   )
 }

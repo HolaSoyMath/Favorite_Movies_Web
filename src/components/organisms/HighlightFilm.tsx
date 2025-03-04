@@ -33,7 +33,7 @@ export default function HighlightFilm({
             {nameMovie}
           </LabelFilm>
           <Label className="text-xl mb-5 text-white">{description}</Label>
-          <Link href={`movie/${idMovie}`} className="flex items-center h-12">
+          <Link href={`/movie/${idMovie}`} className="flex items-center h-12">
             <CustomButton icon={Info} text="Mais Informações" />
           </Link>
         </div>
