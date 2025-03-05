@@ -4,6 +4,7 @@ import { Info } from 'lucide-react'
 import React, { HTMLAttributes } from 'react'
 import { LabelFilm } from '../atoms/LabelFilm'
 import Link from 'next/link'
+import YoutubeVideo from '../atoms/YoutubeVideo'
 
 export interface HighlightFilmProps extends HTMLAttributes<HTMLDivElement> {
   urlPosterImg: string
@@ -37,11 +38,12 @@ export default function HighlightFilm({
             <CustomButton icon={Info} text="Mais Informações" />
           </Link>
         </div>
-        <div className="flex w-1/2 justify-center">
-          <iframe
-            width="711"
-            height="400"
-            src={`https://www.youtube.com/embed/${trailerUrl}?autoplay=1&mute=1`}
+        <div className="flex w-full justify-end items-center pr-24 ">
+          <YoutubeVideo
+            heightVideo={540}
+            widthVideo={960}
+            trailerUrl={trailerUrl}
+            className='max-w-[90%] aspect-video'
           />
         </div>
       </div>
