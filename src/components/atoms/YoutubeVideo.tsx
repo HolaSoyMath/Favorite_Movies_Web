@@ -7,8 +7,6 @@ type YoutubeVideoProps = {
   className?: string
 }
 
-
-
 export default function YoutubeVideo(params: YoutubeVideoProps) {
   const { trailerUrl, widthVideo, heightVideo, className } = params
 

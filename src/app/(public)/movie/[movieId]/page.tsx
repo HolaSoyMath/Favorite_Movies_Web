@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
 import { infoMovieCast } from '@/mock/InfoMovieCast.mock'
 import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
+import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { MessageSquare } from 'lucide-react'
 import React from 'react'
@@ -22,6 +23,7 @@ import { z } from 'zod'
 const pathImage = 'https://github.com/shadcn.png'
 const movieCast = infoMovieCast
 const movieDetails = infoMoviesDetails
+const movieTrailer: string = infoMovieVideos.results.find(movie => movie.type == 'Trailer')!.key
 
 // Funções
 const formSchema = z.object({
@@ -80,6 +82,7 @@ export default function MoviePage() {
         genres={movieDetails.genres.map((genre) => genre.name)}
         minutes={movieDetails.runtime}
         releaseYear={new Date(movieDetails.release_date).getFullYear()}
+        trailerUrl={movieTrailer}
       />
 
       <section className="px-12">

@@ -14,6 +14,7 @@ interface MovieHeaderProps {
   minutes: number
   genres: string[]
   description: string
+  trailerUrl: string
 }
 
 export default function MovieHeader({
@@ -24,6 +25,7 @@ export default function MovieHeader({
   description,
   backgroundImg,
   posterImg,
+  trailerUrl,
 }: MovieHeaderProps) {
   function convertMinutesToHours(minutes: number) {
     const hours = Math.floor(minutes / 60)
@@ -89,7 +91,7 @@ export default function MovieHeader({
           <YoutubeVideo
             heightVideo={540}
             widthVideo={960}
-            trailerUrl={'ocEv3K_H9o4'}
+            trailerUrl={trailerUrl}
             className="max-w-[90%] aspect-video"
           />
         </div>
