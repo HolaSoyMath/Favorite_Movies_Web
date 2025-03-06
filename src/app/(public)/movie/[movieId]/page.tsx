@@ -86,7 +86,6 @@ export default function MoviePage() {
       />
 
       <section className="px-12">
-        
         <section className="my-5">
           <CarouselCardPeople cast={infosCard} />
           <Label className="text-4xl font-semibold text-[--foreground]">
