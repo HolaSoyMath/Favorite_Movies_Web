@@ -1,23 +1,19 @@
 import React from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Film, Heart, Key, Pencil, Star } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import BaseParagraph from '../atoms/BaseParagraph'
 import { Button } from '../ui/button'
+import UserImage from '../atoms/UserImage'
 
 export default function ProfileInfo() {
+  const pathImage = "https://github.com/shadcn.png"
+
   return (
     <aside className="flex flex-col px-5 py-7 items-center bg-white dark:bg-gray-900 border-[#E3E5E8] dark:border-transparent border-2 rounded-lg">
       <div className="w-24 h-24">
-        <Avatar className="ml-4 w-full h-full rounded-full">
-          <AvatarImage
-            className="rounded-full"
-            src="https://github.com/shadcn.png"
-          />
-          <AvatarFallback>Ícone Avatar</AvatarFallback>
-        </Avatar>
+        <UserImage src={pathImage} className='w-full h-full' />
       </div>
-      <BaseParagraph variant="title" className="text-center mt-10">
+      <BaseParagraph variant="title" className="text-center mt-6">
         João da Silva
       </BaseParagraph>
       <BaseParagraph variant="description" className="text-center">

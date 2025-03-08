@@ -22,7 +22,7 @@ type YoutubeVideoProps = {
  * @example
  * ```tsx
  * <YoutubeVideo 
- *   videoUrl="/dQw4w9WgXcQ" 
+ *   videoUrl="dQw4w9WgXcQ" 
  *   width="100%" 
  *   height={400} 
  *   className="rounded-lg shadow-lg" 
@@ -37,7 +37,7 @@ export default function YoutubeVideo(params: YoutubeVideoProps) {
     <iframe
       width={width.toString()}
       height={height.toString()}
-      src={`https://www.youtube.com/embed${videoUrl}?autoplay=1&mute=1`}
+      src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1`}
       className={className}
     />
   )

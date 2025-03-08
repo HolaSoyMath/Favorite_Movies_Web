@@ -1,5 +1,4 @@
 import React from 'react'
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { Form, FormControl, FormField, FormItem } from '../ui/form'
 import { Button } from '../ui/button'
 import { MessageSquare } from 'lucide-react'
@@ -8,6 +7,7 @@ import { commentsMock } from '@/mock/CommentMovie.mock'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import UserImage from '../atoms/UserImage'
 
 // Dados Mock
 const pathImage = 'https://github.com/shadcn.png'
@@ -36,11 +36,7 @@ export default function Comments() {
     <section className="my-5">
       <p className="text-4xl font-semibold text-[--foreground]">Comentários</p>
       <div className="flex gap-4 mt-5">
-        <Avatar className="ml-4">
-          <AvatarImage src={pathImage} />
-          <AvatarFallback>Ícone Avatar</AvatarFallback>
-        </Avatar>
-
+        <UserImage src={pathImage} className="ml-4" />
         <Form {...form}>
           <form className="w-full" onSubmit={form.handleSubmit(onSubmitHandle)}>
             <FormField
@@ -71,7 +67,7 @@ export default function Comments() {
 
       {movieComments.map((comment, index) => (
         <CommentMovie
-          avatarImg={comment.avatarImg}
+          pathImg={comment.avatarImg}
           name={comment.name}
           date={comment.date}
           key={index}
