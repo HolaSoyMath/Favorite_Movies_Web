@@ -12,7 +12,7 @@ export interface ProfileProps {
   quantityFavoriteMovies: number
 }
 
-export default function Profile() {
+export default function ProfileTemplate() {
   return (
     <div className="px-12 grid gap-4 grid-cols-3">
       <ProfileInfo />

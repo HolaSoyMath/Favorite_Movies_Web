@@ -1,5 +1,5 @@
 'use client'
-import MovieRatings from '@/components/molecules/MovieRatings'
+import MovieRatingDisplay from '@/components/molecules/MovieRatingDisplay'
 import MovieCardCarousel from '@/components/organisms/MovieCardCarousel'
 import PeopleCardCarousel, {
   Cast,
@@ -18,7 +18,7 @@ const movieTrailer: string = infoMovieVideos.results.find(
   (movie) => movie.type == 'Trailer'
 )!.key
 
-export default function Movie() {
+export default function MovieTemplate() {
   const actors = movieCast.cast.filter(
     (member) => member.known_for_department == 'Acting'
   )
@@ -66,7 +66,7 @@ export default function Movie() {
           <p className="text-4xl font-semibold text-[--foreground]">
             Sua Avaliação
           </p>
-          <MovieRatings />
+          <MovieRatingDisplay />
         </section>
         <Comments />
       </section>

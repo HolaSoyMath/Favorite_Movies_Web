@@ -1,6 +1,6 @@
 import React from 'react'
 import { Calendar, Clock4, Film, Heart, Share2 } from 'lucide-react'
-import RatingMovieDescriptionCard from '../molecules/RatingMovieDescriptionCard'
+import MovieRatingCard from '../molecules/MovieRatingCard'
 import YoutubeVideo from '../atoms/YoutubeVideo'
 import Text from '../atoms/Text'
 import { Button } from '../ui/button'
@@ -69,16 +69,8 @@ export default function MovieDetailsHeader({
             {description}
           </Text>
           <div className="flex gap-6 mt-5">
-            <RatingMovieDescriptionCard
-              fontData="TMDB"
-              rating={7.8}
-              quantity={1250}
-            />
-            <RatingMovieDescriptionCard
-              fontData="MathFlix"
-              rating={0}
-              quantity={0}
-            />
+            <MovieRatingCard fontData="TMDB" rating={7.8} quantity={1250} />
+            <MovieRatingCard fontData="MathFlix" rating={0} quantity={0} />
           </div>
           <div className="flex gap-6 mt-5">
             <Button className="h-12 bg-white text-black rounded-full px-5">

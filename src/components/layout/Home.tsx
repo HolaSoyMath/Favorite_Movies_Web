@@ -9,7 +9,7 @@ const movieTrailer: string = infoMovieVideos.results.find(
   (movie) => movie.type == 'Trailer'
 )!.key
 
-export default function Home() {
+export default function HomeTemplate() {
   return (
     <>
       <FeaturedMovieBanner

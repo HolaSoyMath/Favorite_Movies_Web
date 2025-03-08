@@ -7,7 +7,7 @@ import {
   CarouselPrevious,
 } from '../ui/carousel'
 import { Label } from '../ui/label'
-import PersonCard from './PersonCard'
+import PersonCard from '../molecules/PersonCard'
 
 export interface Cast {
   name: string
@@ -15,7 +15,8 @@ export interface Cast {
   pathImg: string | null
   personId: string
 }
-export interface PeopleCardCarouselProps extends HTMLAttributes<HTMLDivElement> {
+export interface PeopleCardCarouselProps
+  extends HTMLAttributes<HTMLDivElement> {
   cast: Cast[]
   className?: string
 }

@@ -4,11 +4,11 @@ import { Filter, Search } from 'lucide-react'
 import React, { useState } from 'react'
 import Filters from '@/components/organisms/Filters'
 import { mockCarouselInfoMovies } from '@/mock/MoviesCarousel.mock'
-import { MovieCard } from '@/components/organisms/MovieCard'
+import { MovieCard } from '@/components/molecules/MovieCard'
 import { mockGenreList } from '@/mock/GenreMovieList.mock'
 import { Button } from '@/components/ui/button'
 
-export default function Explorer() {
+export default function ExplorerTemplate() {
   const [showFilter, setShowFilter] = useState(false)
 
   const movies = mockCarouselInfoMovies.results

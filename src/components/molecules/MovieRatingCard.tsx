@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react'
 import { Card, CardContent, CardDescription, CardHeader } from '../ui/card'
 import { Star } from 'lucide-react'
 
-export interface RatingMovieDescriptionCardProps
+export interface MovieRatingCardProps
   extends HTMLAttributes<HTMLDivElement> {
   fontData: string
   rating: number
@@ -10,8 +10,8 @@ export interface RatingMovieDescriptionCardProps
   className?: string
 }
 
-export default function RatingMovieDescriptionCard(
-  params: RatingMovieDescriptionCardProps
+export default function MovieRatingCard(
+  params: MovieRatingCardProps
 ) {
   return (
     <Card className={`w-[150px] bg-slate-700 border-none`}>

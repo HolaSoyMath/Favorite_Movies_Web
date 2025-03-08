@@ -1,4 +1,4 @@
-import Profile from '@/components/layout/Profile'
+import ProfileTemplate from '@/components/layout/Profile'
 import React from 'react'
 
 export interface ProfileProps {
@@ -11,7 +11,5 @@ export interface ProfileProps {
 }
 
 export default function ProfilePage() {
-  return (
-    <Profile />
-  )
+  return <ProfileTemplate />
 }

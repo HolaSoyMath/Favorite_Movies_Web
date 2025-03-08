@@ -8,7 +8,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '../ui/carousel'
-import { MovieCard } from './MovieCard'
+import { MovieCard } from '../molecules/MovieCard'
 import { Label } from '../ui/label'
 import Link from 'next/link'
 

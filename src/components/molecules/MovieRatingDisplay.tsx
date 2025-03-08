@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { Ratings } from '../atoms/Ratings'
 
-interface MovieRatingsProps {
+interface MovieRatingDisplayProps {
   initialValue?: number
 }
 
-export default function MovieRatings({initialValue = 0}: MovieRatingsProps) {
+export default function MovieRatingDisplay({
+  initialValue = 0,
+}: MovieRatingDisplayProps) {
   const [rating, setRating] = useState(initialValue)
 
   function emojiRating(value: number): string {
