@@ -1,9 +1,9 @@
-import { CustomButton } from '@/components/molecules/CustomButton'
 import { Label } from '@/components/ui/label'
 import { Info } from 'lucide-react'
 import React, { HTMLAttributes } from 'react'
 import Link from 'next/link'
 import YoutubeVideo from '../atoms/YoutubeVideo'
+import { Button } from '../ui/button'
 
 export interface HighlightFilmProps extends HTMLAttributes<HTMLDivElement> {
   urlPosterImg: string
@@ -34,7 +34,10 @@ export default function HighlightFilm({
           </h1>
           <Label className="text-xl mb-5 text-white">{description}</Label>
           <Link href={`/movie/${idMovie}`} className="flex items-center h-12">
-            <CustomButton icon={Info} text="Mais Informações" />
+          <Button className="h-12 bg-white text-black rounded-full px-5">
+              <Info />
+              Compartilhar
+            </Button>
           </Link>
         </div>
         <div className="flex w-full justify-end items-center pr-24 ">

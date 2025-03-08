@@ -23,9 +23,6 @@ export default function ProfileInfo() {
       <BaseParagraph variant="description" className="text-center">
         joao.silva@email.com
       </BaseParagraph>
-      {/* <ButtonIcon className="w-full mt-3" icon={Pencil}>
-        Editar Perfil
-      </ButtonIcon> */}
       <Button className='w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border'>
         <Pencil />
         Editar Perfil
