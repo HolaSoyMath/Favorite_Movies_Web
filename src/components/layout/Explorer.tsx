@@ -50,7 +50,7 @@ export default function ExplorerTemplate() {
               idMovie: movie.id.toString(),
               poster: movie.poster_path,
             }}
-            className="h-full w-[230px] h-[420px]"
+            className="w-[230px] h-[420px]"
             key={movie.id.toString()}
           />
         ))}
