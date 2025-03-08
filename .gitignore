@@ -42,3 +42,5 @@ next-env.d.ts
 
 # support files
 .zip
+
+src/app/(private)/teste/

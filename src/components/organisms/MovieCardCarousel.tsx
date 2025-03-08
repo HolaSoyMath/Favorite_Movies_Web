@@ -8,19 +8,19 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from '../ui/carousel'
-import { CardMovie } from './CardMovie'
+import { MovieCard } from '../molecules/MovieCard'
 import { Label } from '../ui/label'
 import Link from 'next/link'
 
-export interface CarouselMovieProps extends HTMLAttributes<HTMLDivElement> {
+export interface MovieCardProps extends HTMLAttributes<HTMLDivElement> {
   title: string
   className?: string
 }
 
-export default function CarouselCardMovie({
+export default function MovieCardCarousel({
   title,
   className,
-}: CarouselMovieProps) {
+}: MovieCardProps) {
   const movies = mockCarouselInfoMovies.results
   const genres = mockGenreList.genres
 
@@ -38,7 +38,7 @@ export default function CarouselCardMovie({
           {movies.map((movie) => (
             <CarouselItem className="basis-1/7" key={movie.id.toString()}>
               <Link href={`/movie/${movie.id}`}>
-                <CardMovie
+                <MovieCard
                   movie={{
                     genre: genres.find(
                       (genre) => genre.id === movie.genre_ids[0]
