@@ -1,9 +1,9 @@
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { ButtonIcon } from '../atoms/ButtonIcon'
 import { Film, Heart, Key, Pencil, Star } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import BaseParagraph from '../atoms/BaseParagraph'
+import { Button } from '../ui/button'
 
 export default function ProfileInfo() {
   return (
@@ -23,12 +23,17 @@ export default function ProfileInfo() {
       <BaseParagraph variant="description" className="text-center">
         joao.silva@email.com
       </BaseParagraph>
-      <ButtonIcon className="w-full mt-3" icon={Pencil}>
+      {/* <ButtonIcon className="w-full mt-3" icon={Pencil}>
         Editar Perfil
-      </ButtonIcon>
-      <ButtonIcon className="w-full mt-3" icon={Key}>
+      </ButtonIcon> */}
+      <Button className='w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border'>
+        <Pencil />
+        Editar Perfil
+      </Button>
+      <Button className='w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border'>
+        <Key />
         Alterar Senha
-      </ButtonIcon>
+      </Button>
 
       <hr className="border-1 border-gray-700 w-full my-3" />
 
