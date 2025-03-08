@@ -4,7 +4,7 @@ import { Filter, Search } from 'lucide-react'
 import React, { useState } from 'react'
 import Filters from '@/components/organisms/Filters'
 import { mockCarouselInfoMovies } from '@/mock/MoviesCarousel.mock'
-import { CardMovie } from '@/components/organisms/CardMovie'
+import { MovieCard } from '@/components/organisms/MovieCard'
 import { mockGenreList } from '@/mock/GenreMovieList.mock'
 import { Button } from '@/components/ui/button'
 
@@ -40,7 +40,7 @@ export default function Explorer() {
       )}
       <section className="mt-5 w-full grid items-center sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-x-4 gap-y-7">
         {movies.map((movie) => (
-          <CardMovie
+          <MovieCard
             movie={{
               genre: genres.find((genre) => genre.id === movie.genre_ids[0])!
                 .name,

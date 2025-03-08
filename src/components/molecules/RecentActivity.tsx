@@ -1,6 +1,6 @@
 import { Star } from 'lucide-react'
 import React from 'react'
-import BaseParagraph from '../atoms/BaseParagraph'
+import Text from '../atoms/Text'
 
 interface RecentActivityProps {
   className?: string
@@ -17,15 +17,11 @@ export default function RecentActivity(params: RecentActivityProps) {
         <Star className="h-auto" />
       </div>
       <div>
-        <BaseParagraph variant="title" fontWeight="semibold">
+        <Text variant="title" fontWeight="semibold">
           Avatar: O Caminho da Água
-        </BaseParagraph>
-        <BaseParagraph variant="description">
-          Avaliou com 5 estrelas
-        </BaseParagraph>
-        <BaseParagraph variant="date">
-          2024-03-15
-        </BaseParagraph>
+        </Text>
+        <Text variant="description">Avaliou com 5 estrelas</Text>
+        <Text variant="date">2024-03-15</Text>
       </div>
     </div>
   )

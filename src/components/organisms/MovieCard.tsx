@@ -8,11 +8,11 @@ import {
   CardHeader,
   CardTitle,
 } from '../ui/card'
-import { CardMovieProps } from '@/types/CardMovie.types'
+import { MovieCardProps } from '@/types/CardMovie.types'
 import { BadgeInfo } from '../atoms/Badge'
 import { Ratings } from '../atoms/Ratings'
 
-export function CardMovie({ movie, className }: CardMovieProps) {
+export function MovieCard({ movie, className }: MovieCardProps) {
   const [favorite, setFavorite] = useState(0)
   const [rating, setRating] = useState(0)
 

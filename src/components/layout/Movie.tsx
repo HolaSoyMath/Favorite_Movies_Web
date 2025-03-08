@@ -1,14 +1,14 @@
 'use client'
 import MovieRatings from '@/components/molecules/MovieRatings'
-import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
-import CarouselCardPeople, {
+import MovieCardCarousel from '@/components/organisms/MovieCardCarousel'
+import PeopleCardCarousel, {
   Cast,
-} from '@/components/organisms/CarouselCardPeople'
+} from '@/components/organisms/PeopleCardCarousel'
 import Comments from '@/components/organisms/Comments'
 import MovieDetailsHeader from '@/components/organisms/MovieDetailsHeader'
-import { infoMovieCast } from '@/mock/InfoMovieCast.mock'
-import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
-import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
+import { infoMovieCast } from '@/mock/MovieCast.mock'
+import { infoMoviesDetails } from '@/mock/MovieDetails.mock'
+import { infoMovieVideos } from '@/mock/MovieVideos.mock'
 import React from 'react'
 
 // Dados Mockados
@@ -62,7 +62,7 @@ export default function Movie() {
 
       <section className="px-12">
         <section className="my-5">
-          <CarouselCardPeople cast={infosCard} />
+          <PeopleCardCarousel cast={infosCard} />
           <p className="text-4xl font-semibold text-[--foreground]">
             Sua Avaliação
           </p>
@@ -70,7 +70,7 @@ export default function Movie() {
         </section>
         <Comments />
       </section>
-      <CarouselCardMovie title="Recomendados" className="px-12 w-full mt-5" />
+      <MovieCardCarousel title="Recomendados" className="px-12 w-full mt-5" />
     </>
   )
 }

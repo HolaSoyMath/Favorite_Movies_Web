@@ -1,8 +1,8 @@
 import React from 'react'
 import { Calendar, Clock4, Film, Heart, Share2 } from 'lucide-react'
-import CardRatingMovieDescription from '../molecules/CardRatingMovieDescription'
+import RatingMovieDescriptionCard from '../molecules/RatingMovieDescriptionCard'
 import YoutubeVideo from '../atoms/YoutubeVideo'
-import BaseParagraph from '../atoms/BaseParagraph'
+import Text from '../atoms/Text'
 import { Button } from '../ui/button'
 
 interface MovieDetailsHeaderProps {
@@ -65,16 +65,16 @@ export default function MovieDetailsHeader({
               <span>{genres.map((genre) => genre).join(', ')}</span>
             </p>
           </div>
-          <BaseParagraph variant="subtitle" className="text-white">
+          <Text variant="subtitle" className="text-white">
             {description}
-          </BaseParagraph>
+          </Text>
           <div className="flex gap-6 mt-5">
-            <CardRatingMovieDescription
+            <RatingMovieDescriptionCard
               fontData="TMDB"
               rating={7.8}
               quantity={1250}
             />
-            <CardRatingMovieDescription
+            <RatingMovieDescriptionCard
               fontData="MathFlix"
               rating={0}
               quantity={0}

@@ -3,8 +3,14 @@ import { cn } from '@/lib/utils'
 import { HTMLAttributes } from 'react'
 import { tv } from 'tailwind-variants'
 
-export interface BaseParagraphProps extends HTMLAttributes<HTMLParagraphElement> {
-  variant?: 'heading' | 'title' | 'smtitle' | 'subtitle' | 'description' | 'date'
+export interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
+  variant?:
+    | 'heading'
+    | 'title'
+    | 'smtitle'
+    | 'subtitle'
+    | 'description'
+    | 'date'
   fontWeight?: 'default' | 'semibold' | 'bold' | 'extraBold'
   className?: string
   children?: React.ReactNode
@@ -30,16 +36,16 @@ const baseParagraphVariants = tv({
   },
   defaultVariants: {
     variant: 'title',
-    fontWeight: 'default'
+    fontWeight: 'default',
   },
 })
 
 /**
- * Componente BaseParagraph.
- * 
+ * Componente Text.
+ *
  * Este componente renderiza um parágrafo estilizado com base nas propriedades fornecidas.
- * 
- * @property variant {('heading' | 'title' | 'subtitle' | 'description' | 'date')} - Define o estilo do parágrafo. 
+ *
+ * @property variant {('heading' | 'title' | 'subtitle' | 'description' | 'date')} - Define o estilo do parágrafo.
  * Pode ser um dos seguintes:
  *   - 'heading': Estilo para cabeçalho (font-bold, text-2xl, text-primary).
  *   - 'title': Estilo para título (font-semibold, text-xl, text-primary).
@@ -55,11 +61,13 @@ const baseParagraphVariants = tv({
  *   - 'extraBold': Peso da fonte em negrito extra.
  * @returns {JSX.Element} O elemento JSX que representa o parágrafo estilizado.
  */
-export default function BaseParagraph(props: BaseParagraphProps) {
+export default function Text(props: TextProps) {
   const { variant, fontWeight, className, children } = props
 
   return (
-    <p className={cn(baseParagraphVariants({ variant, fontWeight }), className)}>
+    <p
+      className={cn(baseParagraphVariants({ variant, fontWeight }), className)}
+    >
       {children}
     </p>
   )

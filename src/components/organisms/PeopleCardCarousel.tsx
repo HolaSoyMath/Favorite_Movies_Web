@@ -7,20 +7,23 @@ import {
   CarouselPrevious,
 } from '../ui/carousel'
 import { Label } from '../ui/label'
-import CardPeople from './CardPeople'
+import PersonCard from './PersonCard'
 
-export interface Cast{
+export interface Cast {
   name: string
   character: string
   pathImg: string | null
   personId: string
 }
-export interface CarouselPeopleProps extends HTMLAttributes<HTMLDivElement> {
+export interface PeopleCardCarouselProps extends HTMLAttributes<HTMLDivElement> {
   cast: Cast[]
   className?: string
 }
 
-export default function CarouselCardPeople({cast, className}: CarouselPeopleProps) {
+export default function PeopleCardCarousel({
+  cast,
+  className,
+}: PeopleCardCarouselProps) {
   return (
     <>
       <Label className="text-4xl font-semibold text-[--foreground]">
@@ -34,7 +37,11 @@ export default function CarouselCardPeople({cast, className}: CarouselPeopleProp
         <CarouselContent className="h-[400px]">
           {cast.map((people) => (
             <CarouselItem className="basis-1/7" key={people.personId}>
-              <CardPeople character={people.character} name={people.name} pathImage={people.pathImg ?? 'https://github.com/shadcn.png'}/>
+              <PersonCard
+                character={people.character}
+                name={people.name}
+                pathImage={people.pathImg ?? 'https://github.com/shadcn.png'}
+              />
             </CarouselItem>
           ))}
         </CarouselContent>

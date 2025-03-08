@@ -1,7 +1,7 @@
 import RecentActivity from '@/components/molecules/RecentActivity'
 import ProfileInfo from '@/components/organisms/ProfileInfo'
 import React from 'react'
-import BaseParagraph from '../atoms/BaseParagraph'
+import Text from '../atoms/Text'
 
 export interface ProfileProps {
   pathImage: string
@@ -18,9 +18,9 @@ export default function Profile() {
       <ProfileInfo />
       <main className="col-span-2">
         <section className="px-5 py-7 bg-white dark:bg-gray-900 border-[#E3E5E8] dark:border-transparent border-2 rounded-lg">
-          <BaseParagraph variant="title" fontWeight="semibold">
+          <Text variant="title" fontWeight="semibold">
             Atividade Recente
-          </BaseParagraph>
+          </Text>
           <div className="grid grid-cols-1 gap-4 mt-3">
             <RecentActivity />
             <RecentActivity />

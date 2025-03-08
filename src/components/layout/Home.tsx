@@ -1,8 +1,8 @@
 import React from 'react'
-import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
+import MovieCardCarousel from '@/components/organisms/MovieCardCarousel'
 import FeaturedMovieBanner from '@/components/organisms/FeaturedMovieBanner'
-import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
-import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
+import { infoMoviesDetails } from '@/mock/MovieDetails.mock'
+import { infoMovieVideos } from '@/mock/MovieVideos.mock'
 
 const movieDetails = infoMoviesDetails
 const movieTrailer: string = infoMovieVideos.results.find(
@@ -19,22 +19,22 @@ export default function Home() {
         description={movieDetails.overview}
         trailerUrl={movieTrailer}
       />
-      <CarouselCardMovie
+      <MovieCardCarousel
         className="px-12 w-full mt-5"
         title="Em Cartaz"
-      ></CarouselCardMovie>
-      <CarouselCardMovie
+      ></MovieCardCarousel>
+      <MovieCardCarousel
         className="px-12 w-full mt-5"
         title="Populares"
-      ></CarouselCardMovie>
-      <CarouselCardMovie
+      ></MovieCardCarousel>
+      <MovieCardCarousel
         className="px-12 w-full mt-5"
         title="Mais Bem Avaliados"
-      ></CarouselCardMovie>
-      <CarouselCardMovie
+      ></MovieCardCarousel>
+      <MovieCardCarousel
         className="px-12 w-full mt-5"
         title="Próximos Lançamentos"
-      ></CarouselCardMovie>
+      ></MovieCardCarousel>
     </>
   )
 }

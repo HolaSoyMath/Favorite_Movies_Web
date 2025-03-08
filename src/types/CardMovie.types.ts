@@ -9,7 +9,7 @@ export interface MovieData {
   poster: string
 }
 
-export interface CardMovieProps extends HTMLAttributes<HTMLDivElement> {
+export interface MovieCardProps extends HTMLAttributes<HTMLDivElement> {
   movie: MovieData
   className?: string
 }
