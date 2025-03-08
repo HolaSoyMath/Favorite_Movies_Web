@@ -15,7 +15,13 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ThemeChoice } from '../molecules/ThemeChoice'
-import { ProfileDropdown } from '../molecules/ProfileDropdown'
+import {
+  SignedOut,
+  SignInButton,
+  SignedIn,
+  UserButton,
+} from '@clerk/nextjs'
+import { Button } from '../ui/button'
 
 const formSchema = z.object({
   search: z.string().nonempty(),
@@ -60,7 +66,11 @@ export default function NavBar({ className }: NavBarProps) {
             <NavBarButton icon={House} text="Home" link="/" />
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavBarButton icon={Clapperboard} text="Explorar" link="/explorer" />
+            <NavBarButton
+              icon={Clapperboard}
+              text="Explorar"
+              link="/explorer"
+            />
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
@@ -95,8 +105,26 @@ export default function NavBar({ className }: NavBarProps) {
           <NavigationMenuItem>
             <ThemeChoice />
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <ProfileDropdown name="Matheus Santos" />
+          <NavigationMenuItem className="h-12">
+            <SignedOut>
+              <SignInButton>
+                <Button className="text-foreground bg-transparent shadow-none flex h-12 px-3 justify-center items-center transition-all duration-300 hover:bg-input rounded-lg">
+                  Entrar
+                </Button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton userProfileMode='navigation' userProfileUrl='/profile' showName={true} appearance={{
+                elements: {
+                  userButtonBox: 'h-12 px-3 text-foreground hover:bg-input rounded-lg focus-visible:outline-none',
+                  userButtonBox__open: 'bg-input outline-none',
+                  userButtonPopoverCard: 'bg-background shadow-lg rounded-xl border-2 border-border',
+                  userButtonPopoverMain: 'bg-transparent text-foreground', 
+                  userButtonPopoverActionButton : 'text-foreground hover:text-foreground hover:bg-input',
+                  userButtonPopoverFooter: 'hidden'
+                }
+              }} />
+            </SignedIn>
           </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>

@@ -5,6 +5,14 @@ import React from 'react'
 import { ThemeProvider } from '@/components/theme-provider'
 import NavBar from '@/components/organisms/NavBar'
 import Footer from '@/components/molecules/Footer'
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from '@clerk/nextjs'
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -33,18 +41,27 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="pt-br">
-      <body
-        className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <NavBar />
-          <div className="mt-[80px]">
-            {children}
-          </div>
-        </ThemeProvider>
-      <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="pt-br">
+        <body
+          className={`${poppins.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            {/* <header className="flex justify-end items-center p-4 gap-4 h-16">
+              <SignedOut>
+                <SignInButton />
+                <SignUpButton />
+              </SignedOut>
+              <SignedIn>
+                <UserButton />
+              </SignedIn>
+            </header> */}
+            <NavBar />
+            <div className="mt-[80px]">{children}</div>
+          </ThemeProvider>
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   )
 }

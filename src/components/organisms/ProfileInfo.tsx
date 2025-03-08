@@ -1,15 +1,18 @@
+'use client'
 import React from 'react'
-import { Film, Heart, Key, Pencil, Star } from 'lucide-react'
+import { Film, Heart, Pencil, Star } from 'lucide-react'
 import { Badge } from '../ui/badge'
 import Text from '../atoms/Text'
 import { Button } from '../ui/button'
 import UserImage from '../atoms/UserImage'
+import { useClerk } from '@clerk/nextjs'
 
 export default function ProfileInfo() {
   const pathImage = 'https://github.com/shadcn.png'
+  const { openUserProfile } = useClerk();
 
   return (
-    <aside className="flex flex-col px-5 py-7 items-center bg-white dark:bg-gray-900 border-[#E3E5E8] dark:border-transparent border-2 rounded-lg">
+    <aside className="flex max-w-[350px] flex-col px-5 py-7 items-center bg-white dark:bg-gray-900 border-[#E3E5E8] dark:border-transparent border-2 rounded-lg">
       <div className="w-24 h-24">
         <UserImage src={pathImage} className="w-full h-full" />
       </div>
@@ -19,13 +22,10 @@ export default function ProfileInfo() {
       <Text variant="description" className="text-center">
         joao.silva@email.com
       </Text>
-      <Button className="w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border">
+      <Button className="w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border"
+      onClick={() => openUserProfile()}>
         <Pencil />
         Editar Perfil
-      </Button>
-      <Button className="w-full mt-3 py-5 bg-transparent border-2 border-border shadow-none text-foreground hover:bg-border">
-        <Key />
-        Alterar Senha
       </Button>
 
       <hr className="border-1 border-gray-700 w-full my-3" />

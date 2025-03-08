@@ -21,7 +21,7 @@ export function NavBarButton({ icon, link, text }: NavBarButtonProps) {
   return (
     <NavigationMenuItem className="flex align-middle justify-center cursor-pointer">
       <Link href={link}>
-        <NavigationMenuLink className="text-[--foreground] flex h-12 px-3 justify-center items-center transition-all duration-300 hover:bg-[var(--hover-color)] rounded-lg">
+        <NavigationMenuLink className="text-foreground flex h-12 px-3 justify-center items-center transition-all duration-300 hover:bg-input rounded-lg">
           <Icon className={`${text ? 'mr-3' : ''}`} />
           {text}
         </NavigationMenuLink>
