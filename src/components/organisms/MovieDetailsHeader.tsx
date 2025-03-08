@@ -1,12 +1,11 @@
 import React from 'react'
-import { LabelIcon } from '../molecules/LabelIcon'
 import { Calendar, Clock4, Film, Heart, Share2 } from 'lucide-react'
 import CardRatingMovieDescription from '../molecules/CardRatingMovieDescription'
 import YoutubeVideo from '../atoms/YoutubeVideo'
 import BaseParagraph from '../atoms/BaseParagraph'
 import { Button } from '../ui/button'
 
-interface MovieHeaderProps {
+interface MovieDetailsHeaderProps {
   title: string
   backgroundImg: string
   posterImg: string
@@ -17,7 +16,7 @@ interface MovieHeaderProps {
   trailerUrl: string
 }
 
-export default function MovieHeader({
+export default function MovieDetailsHeader({
   title,
   releaseYear,
   minutes,
@@ -26,7 +25,7 @@ export default function MovieHeader({
   backgroundImg,
   posterImg,
   trailerUrl,
-}: MovieHeaderProps) {
+}: MovieDetailsHeaderProps) {
   function convertMinutesToHours(minutes: number) {
     const hours = Math.floor(minutes / 60)
     const mins = minutes % 60
@@ -51,15 +50,20 @@ export default function MovieHeader({
         <div className="pl-10 w-1/2 h-auto">
           <h1 className="text-6xl mb-5 text-white font-semibold">{title}</h1>
           <div className="flex gap-6 mt-3">
-            <LabelIcon icon={Calendar} className="text-white">
-              {releaseYear}
-            </LabelIcon>
-            <LabelIcon icon={Clock4} className="text-white">
-              {convertMinutesToHours(minutes)}
-            </LabelIcon>
-            <LabelIcon icon={Film} className="text-white">
-              {genres.map((genre) => genre).join(', ')}
-            </LabelIcon>
+            <p className="flex items-center text-white">
+              <Calendar />
+              <span>{releaseYear}</span>
+            </p>
+
+            <p className="flex items-center text-white">
+              <Clock4 />
+              <span>{convertMinutesToHours(minutes)}</span>
+            </p>
+
+            <p className="flex items-center text-white">
+              <Film />
+              <span>{genres.map((genre) => genre).join(', ')}</span>
+            </p>
           </div>
           <BaseParagraph variant="subtitle" className="text-white">
             {description}
@@ -89,9 +93,9 @@ export default function MovieHeader({
         </div>
         <div className="flex w-1/2 justify-end items-center pr-24 ">
           <YoutubeVideo
-            heightVideo={540}
-            widthVideo={960}
-            trailerUrl={trailerUrl}
+            height={540}
+            width={960}
+            videoUrl={trailerUrl}
             className="max-w-[90%] aspect-video"
           />
         </div>

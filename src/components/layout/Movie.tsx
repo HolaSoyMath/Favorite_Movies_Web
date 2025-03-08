@@ -5,7 +5,7 @@ import CarouselCardPeople, {
   Cast,
 } from '@/components/organisms/CarouselCardPeople'
 import Comments from '@/components/organisms/Comments'
-import MovieHeader from '@/components/organisms/MovieHeader'
+import MovieDetailsHeader from '@/components/organisms/MovieDetailsHeader'
 import { infoMovieCast } from '@/mock/InfoMovieCast.mock'
 import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
 import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
@@ -49,7 +49,7 @@ export default function Movie() {
 
   return (
     <>
-      <MovieHeader
+      <MovieDetailsHeader
         title={movieDetails.title}
         backgroundImg={movieDetails.backdrop_path}
         posterImg={movieDetails.poster_path}

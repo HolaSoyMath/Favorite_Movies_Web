@@ -34,10 +34,6 @@ const baseParagraphVariants = tv({
   },
 })
 
-
-// NOME DA DOCUMENTAÇÃO DE UM COMPONENTE É JSDOC
-
-
 /**
  * Componente BaseParagraph.
  * 

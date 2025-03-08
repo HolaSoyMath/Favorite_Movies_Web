@@ -1,6 +1,6 @@
 import React from 'react'
 import CarouselCardMovie from '@/components/organisms/CarouselCardMovie'
-import HighlightFilm from '@/components/organisms/HighlightFilm'
+import FeaturedMovieBanner from '@/components/organisms/FeaturedMovieBanner'
 import { infoMoviesDetails } from '@/mock/InfoMovieDetails.mock'
 import { infoMovieVideos } from '@/mock/InfoMovieVideos.mock'
 
@@ -12,10 +12,10 @@ const movieTrailer: string = infoMovieVideos.results.find(
 export default function Home() {
   return (
     <>
-      <HighlightFilm
-        urlPosterImg={movieDetails.backdrop_path}
+      <FeaturedMovieBanner
+        posterUrl={movieDetails.backdrop_path}
         idMovie={movieDetails.id.toString()}
-        nameMovie={movieDetails.title}
+        title={movieDetails.title}
         description={movieDetails.overview}
         trailerUrl={movieTrailer}
       />

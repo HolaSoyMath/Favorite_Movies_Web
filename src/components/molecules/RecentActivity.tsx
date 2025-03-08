@@ -17,7 +17,7 @@ export default function RecentActivity(params: RecentActivityProps) {
         <Star className="h-auto" />
       </div>
       <div>
-        <BaseParagraph variant="title" fontWeight="semiBold">
+        <BaseParagraph variant="title" fontWeight="semibold">
           Avatar: O Caminho da Água
         </BaseParagraph>
         <BaseParagraph variant="description">
