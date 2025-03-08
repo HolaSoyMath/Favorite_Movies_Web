@@ -2,7 +2,6 @@ import { CustomButton } from '@/components/molecules/CustomButton'
 import { Label } from '@/components/ui/label'
 import { Info } from 'lucide-react'
 import React, { HTMLAttributes } from 'react'
-import { LabelFilm } from '../atoms/LabelFilm'
 import Link from 'next/link'
 import YoutubeVideo from '../atoms/YoutubeVideo'
 
@@ -30,9 +29,9 @@ export default function HighlightFilm({
     >
       <div className="w-full h-full bg-gradient-to-r dark:from-zinc-950 to-transparent px-12 py-36 flex">
         <div className="flex flex-col w-1/2">
-          <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
+          <h1 className="text-6xl mb-5 text-white font-semibold">
             {nameMovie}
-          </LabelFilm>
+          </h1>
           <Label className="text-xl mb-5 text-white">{description}</Label>
           <Link href={`/movie/${idMovie}`} className="flex items-center h-12">
             <CustomButton icon={Info} text="Mais Informações" />
@@ -43,7 +42,7 @@ export default function HighlightFilm({
             heightVideo={540}
             widthVideo={960}
             trailerUrl={trailerUrl}
-            className='max-w-[90%] aspect-video'
+            className="max-w-[90%] aspect-video"
           />
         </div>
       </div>

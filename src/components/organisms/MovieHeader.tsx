@@ -1,10 +1,10 @@
 import React from 'react'
-import { LabelFilm } from '../atoms/LabelFilm'
 import { LabelIcon } from '../molecules/LabelIcon'
 import { Calendar, Clock4, Film, Heart, Share2 } from 'lucide-react'
 import CardRating from '../molecules/CardRating'
 import { CustomButton } from '../molecules/CustomButton'
 import YoutubeVideo from '../atoms/YoutubeVideo'
+import BaseParagraph from '../atoms/BaseParagraph'
 
 interface MovieHeaderProps {
   title: string
@@ -48,10 +48,8 @@ export default function MovieHeader({
           }}
           className="h-[450px] w-[300px] bg-cover"
         />
-        <div className="pl-10 w-1/2">
-          <LabelFilm variant="titleHighlightFilm" fontSize="titleHighlight">
-            {title}
-          </LabelFilm>
+        <div className="pl-10 w-1/2 h-auto">
+          <h1 className='text-6xl mb-5 text-white font-semibold'>{title}</h1>
           <div className="flex gap-6 mt-3">
             <LabelIcon icon={Calendar} className="text-white">
               {releaseYear}
@@ -63,13 +61,9 @@ export default function MovieHeader({
               {genres.map((genre) => genre).join(', ')}
             </LabelIcon>
           </div>
-          <LabelFilm
-            variant="descriptionHighlightFilm"
-            fontWeight="normal"
-            className="mt-10 text-white"
-          >
-            {description}
-          </LabelFilm>
+          <BaseParagraph variant='subtitle' className='text-white'>
+          {description}
+          </BaseParagraph>
           <div className="flex gap-6 mt-5">
             <CardRating fontData="TMDB" rating={7.8} quantity={1250} />
             <CardRating fontData="MathFlix" rating={0} quantity={0} />

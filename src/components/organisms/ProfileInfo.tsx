@@ -1,9 +1,9 @@
 import React from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
-import { LabelFilm } from '../atoms/LabelFilm'
 import { ButtonIcon } from '../atoms/ButtonIcon'
 import { Film, Heart, Key, Pencil, Star } from 'lucide-react'
 import { Badge } from '../ui/badge'
+import BaseParagraph from '../atoms/BaseParagraph'
 
 export default function ProfileInfo() {
   return (
@@ -17,12 +17,12 @@ export default function ProfileInfo() {
           <AvatarFallback>Ícone Avatar</AvatarFallback>
         </Avatar>
       </div>
-      <LabelFilm variant="titleCard" className="mt-10 h-7">
+      <BaseParagraph variant="title" className="text-center mt-10">
         João da Silva
-      </LabelFilm>
-      <LabelFilm variant="description" className="my-1 h-7">
+      </BaseParagraph>
+      <BaseParagraph variant="description" className="text-center">
         joao.silva@email.com
-      </LabelFilm>
+      </BaseParagraph>
       <ButtonIcon className="w-full mt-3" icon={Pencil}>
         Editar Perfil
       </ButtonIcon>
@@ -33,65 +33,52 @@ export default function ProfileInfo() {
       <hr className="border-1 border-gray-700 w-full my-3" />
 
       <section className="w-full">
-        <LabelFilm variant="titleCard" className="h-7">
+        <BaseParagraph variant="title" fontWeight="bold">
           Estatísticas
-        </LabelFilm>
-        <div className="flex items-center h-10 gap-4">
+        </BaseParagraph>
+        <div className="flex items-center h-10 gap-4 mt-3">
           <Film className="text-indigo-600 h-1/2" />
           <div className="h-full">
-            <LabelFilm variant="titleCard" fontSize="md" className="h-auto">
+            <BaseParagraph variant="smtitle" fontWeight="bold">
               127
-            </LabelFilm>
-            <LabelFilm
-              variant="description"
-              fontSize="xs"
-              fontWeight="normal"
-              className="h-auto text-slate-500"
-            >
+            </BaseParagraph>
+            <BaseParagraph variant="date" className="text-slate-500">
               Filmes Avaliados
-            </LabelFilm>
+            </BaseParagraph>
           </div>
         </div>
 
         <div className="flex items-center h-10 gap-4 mt-3">
           <Star className="text-yellow-400 h-1/2" />
           <div className="h-full">
-            <LabelFilm variant="titleCard" fontSize="md" className="h-auto">
+            <BaseParagraph variant="smtitle" fontWeight="bold">
               4.2
-            </LabelFilm>
-            <LabelFilm
-              variant="description"
-              fontSize="xs"
-              fontWeight="normal"
-              className="h-auto text-slate-500"
-            >
-              Média de Avaliações
-            </LabelFilm>
+            </BaseParagraph>
+            <BaseParagraph variant="date" className="text-slate-500">
+              Média Avaliações
+            </BaseParagraph>
           </div>
         </div>
 
         <div className="flex items-center h-10 gap-4 mt-3">
           <Heart className="text-red-500 h-1/2" />
           <div className="h-full">
-            <LabelFilm variant="titleCard" fontSize="md" className="h-auto">
-              127
-            </LabelFilm>
-            <LabelFilm
-              variant="description"
-              fontSize="xs"
-              fontWeight="normal"
-              className="h-auto text-slate-500"
-            >
+            <BaseParagraph variant="smtitle" fontWeight="bold">
+              56
+            </BaseParagraph>
+            <BaseParagraph variant="date" className="text-slate-500">
               Filmes Favoritos
-            </LabelFilm>
+            </BaseParagraph>
           </div>
         </div>
       </section>
 
       <hr className="border-1 border-gray-700 w-full my-3" />
 
-      <LabelFilm variant="titleCard">Gêneros Favoritos</LabelFilm>
-      <div className="flex gap-4">
+      <BaseParagraph variant="title" fontWeight="bold" className='text-center'>
+        Gêneros Favoritos
+      </BaseParagraph>
+      <div className="flex gap-4 mt-3">
         <Badge className="rounded-full">Ficção Científica</Badge>
         <Badge className="rounded-full">Ação</Badge>
         <Badge className="rounded-full">Drama</Badge>
