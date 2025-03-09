@@ -5,16 +5,17 @@ import { Badge } from '../ui/badge'
 import Text from '../atoms/Text'
 import { Button } from '../ui/button'
 import UserImage from '../atoms/UserImage'
-import { useClerk } from '@clerk/nextjs'
+import { useClerk, useUser } from '@clerk/nextjs'
 
 export default function ProfileInfo() {
-  const pathImage = 'https://github.com/shadcn.png'
   const { openUserProfile } = useClerk();
+
+  const {user} = useUser()
 
   return (
     <aside className="flex max-w-[350px] flex-col px-5 py-7 items-center bg-white dark:bg-gray-900 border-[#E3E5E8] dark:border-transparent border-2 rounded-lg">
       <div className="w-24 h-24">
-        <UserImage src={pathImage} className="w-full h-full" />
+        <UserImage src={user ? user.imageUrl : ''} className="w-full h-full" />
       </div>
       <Text variant="title" className="text-center mt-6">
         João da Silva

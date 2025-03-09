@@ -8,9 +8,9 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import UserImage from '../atoms/UserImage'
+import { useUser } from '@clerk/nextjs'
 
 // Dados Mock
-const pathImage = 'https://github.com/shadcn.png'
 const movieComments = commentsMock
 
 // Funções
@@ -32,11 +32,13 @@ export default function Comments() {
     console.log(data.comment)
   }
 
+  const {user} = useUser()
+
   return (
     <section className="my-5">
       <p className="text-4xl font-semibold text-[--foreground]">Comentários</p>
       <div className="flex gap-4 mt-5">
-        <UserImage src={pathImage} className="ml-4" />
+        <UserImage src={user ? user.imageUrl : ''} className="ml-4" />
         <Form {...form}>
           <form className="w-full" onSubmit={form.handleSubmit(onSubmitHandle)}>
             <FormField

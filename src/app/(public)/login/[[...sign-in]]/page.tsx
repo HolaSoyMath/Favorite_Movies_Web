@@ -1,6 +1,6 @@
 import React from 'react'
-import { SignIn } from '@clerk/nextjs'
+import Login from '@/components/layout/Login'
 
-export default function Page() {
-  return <SignIn />
+export default function LoginPage() {
+  return <Login />
 }
